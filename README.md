@@ -35,7 +35,7 @@ It combines **telehealth / in-clinic appointments** with a **medication & prescr
 
 ---
 
-## 🛠️ Technologies (at a glance)
+## 🛠️ Technologies
 
 - **Node.js + Express** — server and routing  
 - **MongoDB + Mongoose** — database & schemas  
@@ -44,15 +44,6 @@ It combines **telehealth / in-clinic appointments** with a **medication & prescr
 - **method-override, morgan, dotenv** — helpful Express utilities
 
 > Architecture: classic **MVC** — `models/`, `controllers/`, `routes/`, `views/` for clarity and easy scaling.
-
----
-
-## 🗺️ Roadmap (next steps)
-
-- **Authentication**: Patient & Doctor login, session management, role-based dashboards  
-- **Doctor availability**: schedule settings  
-- **Telehealth room**: video session placeholder  
-- **Notifications**: optional dose/refill reminders (stored or generated dynamically)
 
 ---
 
