@@ -1,72 +1,62 @@
-# 🏥 Medify – Health & Wellness Management System
+# 🩺 Medify — Health & Wellness Management System
 
-**Medify** is a full-stack CRUD web application that combines **Telehealth Appointments** with a **Medication Tracker**.  
-It is designed to help patients and doctors manage healthcare tasks in one place.
-
----
-
-## 🎯 Purpose
-Medify provides an easy way for:
-- **Patients** to book doctor appointments, keep track of their medications, and receive reminders.  
-- **Doctors** to manage their schedules and track patient appointments.  
-- **Both** to reduce missed appointments, improve medication adherence, and organize care.  
+**Medify** is a full-stack web app that helps **patients** and **doctors** manage care in one place.  
+It combines **telehealth / in-clinic appointments** with a **medication & prescription tracker** to reduce missed visits and improve adherence.
 
 ---
 
-## ⚡ Main Features
+## ✨ What it does
 
-### 👤 Patient Management
-- Store patient details: full name, date of birth, allergies.  
-- Link each patient with multiple appointments and prescriptions.  
+- **Patients**
+  - Create a profile (name, DOB, allergies, contact)
+  - Book appointments (video or in-person)
+  - See upcoming/past visits and view prescriptions
 
-### 🩺 Doctor Management
-- Store doctor profiles: full name, specialty, license number.  
-- Each doctor can manage many appointments.  
-
-### 📅 Telehealth Appointment System
-- Patients schedule appointments with doctors.  
-- Appointment details include:
-  - Date & Time  
-  - Mode → `video` (telehealth) or `clinic` (in-person)  
-  - Status → `upcoming`, `completed`, `canceled`  
-  - Notes for extra information  
-
-👉 **Why?** Helps organize healthcare visits, both online and in person.  
-
-### 💊 Medication Tracker
-- Stores a database of medications (name, form, strength).  
-- Prescriptions include dosage, frequency, and refill info.  
-- Reminders notify patients to take or refill meds.  
-
-👉 **Why?** Improves adherence to treatment and keeps doctors informed.  
+- **Doctors**
+  - Manage schedules and patient appointments
+  - Review basic patient info before visits
+  - Track which medications are prescribed to which patients
 
 ---
 
-## 🔗 Data Relationships
+## 🧩 Core Features
 
-- One **Patient** → many **Appointments**  
-- One **Doctor** → many **Appointments**  
-- One **Patient** → many **Prescriptions**  
-- One **Medication** → many **Patients**  
-- One **Prescription** → many **Reminders**  
+- **Patient Management** — demographics & allergies  
+- **Doctor Management** — specialty & license info  
+- **Appointments** — date/time, **mode** (video/clinic), **status** (upcoming/completed/canceled), notes  
+- **Medications** — name, form, strength  
+- **Prescriptions** — link a patient to a medication with dosage, frequency, start/end dates, refills  
+
+**Data relationships**
+- Patient **1—M** Appointment  
+- Doctor **1—M** Appointment  
+- Patient **1—M** Prescription  
+- Medication **1—M** Prescription
+
+---
+
+## 🛠️ Technologies (at a glance)
+
+- **Node.js + Express** — server and routing  
+- **MongoDB + Mongoose** — database & schemas  
+- **EJS + express-ejs-layouts** — server-rendered views with a shared layout  
+- **CSS** — lightweight custom styling  
+- **method-override, morgan, dotenv** — helpful Express utilities
+
+> Architecture: classic **MVC** — `models/`, `controllers/`, `routes/`, `views/` for clarity and easy scaling.
 
 ---
 
-## 🛠️ Use Cases
+## 🗺️ Roadmap (next steps)
 
-### For Patients
-- Book appointments online  
-- View upcoming & past visits  
-- Track prescriptions & medications  
-- Receive medication reminders  
-
-### For Doctors
-- Manage appointment schedules  
-- View patient information before visits  
-- Track patients’ medications  
-
-### As a Demo/Prototype
-- Demonstrates CRUD operations in a realistic healthcare scenario  
-- Strong portfolio project for **full-stack development**  
+- **Authentication**: Patient & Doctor login, session management, role-based dashboards  
+- **Doctor availability**: schedule settings  
+- **Telehealth room**: video session placeholder  
+- **Notifications**: optional dose/refill reminders (stored or generated dynamically)
 
 ---
+
+## 📌 Summary
+
+Medify is a focused, portfolio-friendly app showing real-world CRUD in healthcare:  
+**Patients, Doctors, Appointments, Medications, Prescriptions** — all in one organized experience.
