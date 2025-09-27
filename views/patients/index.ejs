@@ -1,0 +1,18 @@
+<% layout('layout') -%>
+<div class="card">
+  <h2>Patients</h2>
+  <p><a class="btn" href="/patients/new">+ New Patient</a></p>
+  <table>
+    <thead><tr><th>Name</th><th>DOB</th><th>Allergies</th><th></th></tr></thead>
+    <tbody>
+      <% patients.forEach(p => { %>
+        <tr>
+          <td><a href="/patients/<%= p._id %>"><%= p.full_name %></a></td>
+          <td><%= p.dob ? new Date(p.dob).toLocaleDateString() : '-' %></td>
+          <td><%= (p.allergies||[]).join(', ') %></td>
+          <td><a href="/patients/<%= p._id %>/edit">Edit</a></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

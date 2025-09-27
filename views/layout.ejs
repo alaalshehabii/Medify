@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Medify</title>
+    <!-- make sure the path matches your folder: public/css/main.css -->
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <nav>
+      <div class="wrap">
+        <a class="brand" href="/">🩺 Medify</a>
+        <a href="/patients">Patients</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/appointments">Appointments</a>
+        <a href="/medications">Medications</a>
+        <a href="/prescriptions">Prescriptions</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%- body %>
+    </div>
+
+    <footer style="text-align:center;color:var(--muted);padding:24px 0">
+      Medify © <%= new Date().getFullYear() %>
+    </footer>
+  </body>
+</html>

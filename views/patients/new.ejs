@@ -1,0 +1,12 @@
+<% layout('layout') -%>
+<div class="card">
+  <h2>New Patient</h2>
+  <form method="POST" action="/patients">
+    <div class="field"><label>Name</label><input name="full_name" required></div>
+    <div class="field"><label>DOB</label><input type="date" name="dob"></div>
+    <div class="field"><label>Allergies (comma separated)</label><input name="allergies"></div>
+    <div class="field"><label>Phone</label><input name="phone"></div>
+    <div class="field"><label>Email</label><input name="email"></div>
+    <button class="btn">Create</button>
+  </form>
+</div>

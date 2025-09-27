@@ -1,73 +1,30 @@
+// controllers/auth.js
 const express = require('express');
-const bcrypt = require('bcrypt');
-
-const User = require('../models/user');
-
 const router = express.Router();
 
-router.get('/sign-up', (req, res) => {
-  res.render('auth/sign-up.ejs');
-});
-
+// GET /auth/sign-in (simple form)
 router.get('/sign-in', (req, res) => {
-  res.render('auth/sign-in.ejs');
+  res.render('auth/sign-in.ejs', { title: 'Sign In' });
 });
 
-router.post('/sign-up', async (req, res) => {
-  const userInDatabase = await User.findOne({ username: req.body.username });
-
-  if (userInDatabase) {
-    return res.send('Username or Password is invalid');
+// POST /auth/sign-in (stores username in session for demo)
+router.post('/sign-in', (req, res) => {
+  const { username } = req.body;
+  if (!username?.trim()) {
+    return res.status(400).send('Username is required');
   }
-
-  if (req.body.password !== req.body.confirmPassword) {
-    return res.send('Password and Confirm Password must match');
-  }
-
-  const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-  req.body.password = hashedPassword;
-
-  const newUser = await User.create(req.body);
-
-  req.session.user = {
-    username: newUser.username,
-    _id: newUser._id
-  };
-
-  req.session.save(() => {
-    res.redirect("/");
-  });
+  req.session.user = { username: username.trim() };
+  res.redirect('/vip-lounge');
 });
 
-router.post('/sign-in', async (req, res) => {
-  const userInDatabase = await User.findOne({ username: req.body.username });
-
-  if (!userInDatabase) {
-    return res.send('Username or Password is invalid');
-  }
-
-  const validPassword = bcrypt.compareSync(req.body.password, userInDatabase.password);
-
-  if (!validPassword) {
-    return res.send('Username or Password is invalid');
-  }
-
-  req.session.user = {
-    username: userInDatabase.username,
-    _id: userInDatabase._id,
-  };
-
-  req.session.save(() => {
+// GET /auth/sign-out
+router.get('/sign-out', (req, res) => {
+  req.session.destroy(() => {
+    res.clearCookie('connect.sid');
     res.redirect('/');
   });
 });
 
-router.get("/sign-out", (req, res) => {
-  req.session.destroy(() => {
-    res.redirect("/");
-  });
-});
-
-
-
 module.exports = router;
+
+

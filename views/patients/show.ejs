@@ -1,0 +1,9 @@
+<% layout('layout') -%>
+<div class="card">
+  <h2><%= patient.full_name %></h2>
+  <p><strong>DOB:</strong> <%= patient.dob ? new Date(patient.dob).toLocaleDateString() : '-' %></p>
+  <p><strong>Allergies:</strong> <%= (patient.allergies||[]).join(', ') || '-' %></p>
+  <p><strong>Phone:</strong> <%= patient.phone||'-' %></p>
+  <p><strong>Email:</strong> <%= patient.email||'-' %></p>
+  <p><a class="btn" href="/patients/<%= patient._id %>/edit">Edit</a></p>
+</div>

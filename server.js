@@ -1,61 +1,40 @@
-const dotenv = require('dotenv');
-
-dotenv.config();
-require('./config/databse.js');
 const express = require('express');
+const morgan = require('morgan');
+const methodOverride = require('method-override');
+const path = require('path');
+const expressLayouts = require('express-ejs-layouts');
+
+require('dotenv').config();
+require('./config/database'); // makes the Mongo connection
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-const methodOverride = require('method-override');
-const morgan = require('morgan');
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-const isSignedIn = require('./middleware/is-signed-in.js');
-const passUserToView = require('./middleware/pass-user-to-view.js');
+// --- Views / Layouts ---
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(expressLayouts);
+app.set('layout', 'layout'); // uses views/layout.ejs
 
-// Controllers
-const authController = require('./controllers/auth.js');
-
-// Set the port from environment variable or default to 3000
-const PORT = process.env.PORT ? process.env.PORT : '3000';
-
-// MIDDLEWARE
-//
-// Middleware to parse URL-encoded data from forms
-app.use(express.urlencoded({ extended: false }));
-// Middleware for using HTTP verbs such as PUT or DELETE
-app.use(methodOverride('_method'));
-// Morgan for logging HTTP requests
+// --- Static & Middleware ---
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
-// Session Storage with MongoStore
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI,
-    }),
-  })
-);
+// --- Routes ---
+app.get('/', (req, res) => res.render('index'));
 
-// Add user variable to all templates
-app.use(passUserToView);
+app.use('/patients', require('./routes/patients'));
+app.use('/doctors', require('./routes/doctors'));
+app.use('/appointments', require('./routes/appointments'));
+app.use('/medications', require('./routes/medications'));
+app.use('/prescriptions', require('./routes/prescriptions'));
 
-// PUBLIC
-app.get('/', (req, res) => {
-  res.render('index.ejs');
-});
+// --- 404 ---
+app.use((req, res) => res.status(404).send('Not Found'));
 
-app.use('/auth', authController);
-
-// PROTECTED
-
-app.get('/vip-lounge', isSignedIn, (req, res) => {
-  res.send(`Welcome to the party ${req.session.user.username}.`);
-});
-
+// --- Start ---
 app.listen(PORT, () => {
-  console.log(`The express app is ready on port ${PORT}!`);
+  console.log(`✅ Medify running at http://localhost:${PORT}`);
 });

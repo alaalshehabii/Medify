@@ -1,0 +1,17 @@
+<div class="card">
+  <h2>Medications</h2>
+  <p><a class="btn" href="/medications/new">+ New Medication</a></p>
+  <table>
+    <thead><tr><th>Name</th><th>Form</th><th>Strength</th><th></th></tr></thead>
+    <tbody>
+      <% (medications||[]).forEach(m => { %>
+        <tr>
+          <td><a href="/medications/<%= m._id %>"><%= m.name %></a></td>
+          <td><%= m.form||'-' %></td>
+          <td><%= m.strength||'-' %></td>
+          <td><a href="/medications/<%= m._id %>/edit">Edit</a></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
