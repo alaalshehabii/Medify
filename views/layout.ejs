@@ -4,27 +4,46 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Medify</title>
-    <!-- make sure the path matches your folder: public/css/main.css -->
+
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
-    <nav>
+    <nav class="nav">
       <div class="wrap">
         <a class="brand" href="/">🩺 Medify</a>
+
         <a href="/patients">Patients</a>
         <a href="/doctors">Doctors</a>
         <a href="/appointments">Appointments</a>
         <a href="/medications">Medications</a>
         <a href="/prescriptions">Prescriptions</a>
+
+        <span class="spacer"></span>
+
+        <% if (session?.user) { %>
+          <% if (session.user.role === 'doctor') { %>
+            <a href="/dashboard/doctor">Dashboard</a>
+          <% } else { %>
+            <a href="/dashboard/patient">Dashboard</a>
+          <% } %>
+          <a class="btn ghost" href="/auth/logout">Logout</a>
+        <% } else { %>
+          <a href="/auth/login">Login</a>
+          <a class="btn" href="/auth/signup/patient">Sign up</a>
+        <% } %>
       </div>
     </nav>
 
-    <div class="container">
+    <main class="container">
       <%- body %>
-    </div>
+    </main>
 
-    <footer style="text-align:center;color:var(--muted);padding:24px 0">
-      Medify © <%= new Date().getFullYear() %>
+    <footer class="footer">
+      <div class="wrap">
+        <p>Medify © <%= new Date().getFullYear() %></p>
+      </div>
     </footer>
+
+    <script src="/js/main.js"></script>
   </body>
 </html>
