@@ -1,5 +1,4 @@
 // routes/dashboard.js — protected dashboards
-
 const router = require('express').Router();
 const isSignedIn = require('../middleware/isSignedIn');
 const requireRole = require('../middleware/requireRole');

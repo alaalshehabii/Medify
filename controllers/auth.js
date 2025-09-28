@@ -1,30 +1,123 @@
-// controllers/auth.js
-const express = require('express');
-const router = express.Router();
+// controllers/auth.js — signup, login, logout (patient & doctor)
+const bcrypt = require('bcrypt'); // if this fails on your machine, install & swap to 'bcryptjs'
+const User = require('../models/User');
+const Patient = require('../models/Patient');
+const Doctor = require('../models/Doctor');
 
-// GET /auth/sign-in (simple form)
-router.get('/sign-in', (req, res) => {
-  res.render('auth/sign-in.ejs', { title: 'Sign In' });
-});
+// GET /auth/login
+const viewLogin = (req, res) => {
+  res.render('auth/login', { error: null });
+};
 
-// POST /auth/sign-in (stores username in session for demo)
-router.post('/sign-in', (req, res) => {
-  const { username } = req.body;
-  if (!username?.trim()) {
-    return res.status(400).send('Username is required');
+// POST /auth/login
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email }).lean();
+    if (!user) return res.status(401).render('auth/login', { error: 'Invalid credentials' });
+
+    const ok = await bcrypt.compare(password, user.passwordHash);
+    if (!ok) return res.status(401).render('auth/login', { error: 'Invalid credentials' });
+
+    req.session.user = {
+      _id: user._id,
+      email: user.email,
+      role: user.role,
+      patientId: user.patientId,
+      doctorId: user.doctorId
+    };
+    return res.redirect(user.role === 'doctor' ? '/dashboard/doctor' : '/dashboard/patient');
+  } catch (err) {
+    console.error('Login error:', err);
+    return res.status(500).render('auth/login', { error: 'Something went wrong' });
   }
-  req.session.user = { username: username.trim() };
-  res.redirect('/vip-lounge');
-});
+};
 
-// GET /auth/sign-out
-router.get('/sign-out', (req, res) => {
-  req.session.destroy(() => {
-    res.clearCookie('connect.sid');
-    res.redirect('/');
-  });
-});
+// GET /auth/logout
+const logout = (req, res) => {
+  req.session.destroy(() => res.redirect('/'));
+};
 
-module.exports = router;
+// GET /auth/signup/patient
+const viewSignupPatient = (req, res) => {
+  res.render('auth/signup-patient', { error: null, form: {} });
+};
 
+// POST /auth/signup/patient
+const signupPatient = async (req, res) => {
+  try {
+    const { fullName, dob, email, password, confirmPassword } = req.body;
 
+    if (password !== confirmPassword) {
+      return res.status(400).render('auth/signup-patient', { error: 'Passwords do not match', form: req.body });
+    }
+    const exists = await User.findOne({ email });
+    if (exists) {
+      return res.status(400).render('auth/signup-patient', { error: 'Email already in use', form: req.body });
+    }
+
+    // Patient model uses full_name in DB per earlier schema
+    const patient = await Patient.create({ full_name: fullName, dob, email });
+    const passwordHash = await bcrypt.hash(password, 12);
+
+    const user = await User.create({
+      email,
+      passwordHash,
+      role: 'patient',
+      patientId: patient._id
+    });
+
+    req.session.user = { _id: user._id, email, role: 'patient', patientId: patient._id };
+    return res.redirect('/dashboard/patient');
+  } catch (err) {
+    console.error('Signup patient error:', err);
+    return res.status(500).render('auth/signup-patient', { error: 'Failed to sign up', form: req.body });
+  }
+};
+
+// GET /auth/signup/doctor
+const viewSignupDoctor = (req, res) => {
+  res.render('auth/signup-doctor', { error: null, form: {} });
+};
+
+// POST /auth/signup/doctor
+const signupDoctor = async (req, res) => {
+  try {
+    const { fullName, specialty, licenseNumber, email, password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+      return res.status(400).render('auth/signup-doctor', { error: 'Passwords do not match', form: req.body });
+    }
+    const exists = await User.findOne({ email });
+    if (exists) {
+      return res.status(400).render('auth/signup-doctor', { error: 'Email already in use', form: req.body });
+    }
+
+    const doctor = await Doctor.create({ full_name: fullName, specialty, license_number: licenseNumber });
+    const passwordHash = await bcrypt.hash(password, 12);
+
+    const user = await User.create({
+      email,
+      passwordHash,
+      role: 'doctor',
+      doctorId: doctor._id
+    });
+
+    req.session.user = { _id: user._id, email, role: 'doctor', doctorId: doctor._id };
+    return res.redirect('/dashboard/doctor');
+  } catch (err) {
+    console.error('Signup doctor error:', err);
+    return res.status(500).render('auth/signup-doctor', { error: 'Failed to sign up', form: req.body });
+  }
+};
+
+module.exports = {
+  viewLogin,
+  login,
+  logout,
+  viewSignupPatient,
+  signupPatient,
+  viewSignupDoctor,
+  signupDoctor
+};
