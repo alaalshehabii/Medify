@@ -1,8 +1,135 @@
-<div class="card">
-  <h2>Welcome to Medify</h2>
-  <p>Manage patients, doctors, appointments, medications, and prescriptions in one app.</p>
-  <p>
-    <a class="btn" href="/auth/signup/patient">Sign up as Patient</a>
-    <a class="btn ghost" href="/auth/signup/doctor">Sign up as Doctor</a>
-  </p>
-</div>
+
+<!-- HERO -->
+<section class="hero" data-animate>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>Your health, organized with care.</h1>
+      <p class="lead">
+        Book telehealth or in-clinic appointments, track medications and prescriptions, and keep
+        patients & doctors perfectly in sync — all in one place.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="/auth/signup/patient">Sign up as Patient</a>
+        <a class="btn ghost" href="/auth/signup/doctor">Sign up as Doctor</a>
+        <a class="link" href="/appointments/new">Book an appointment →</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat hover-lift">
+          <div class="stat-num">10k+</div>
+          <div class="stat-label">Appointments tracked</div>
+        </div>
+        <div class="stat hover-lift">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-label">Patient satisfaction</div>
+        </div>
+        <div class="stat hover-lift">
+          <div class="stat-num">200+</div>
+          <div class="stat-label">Verified doctors</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-media hover-lift">
+      <img
+        src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1400&q=60"
+        alt="Modern hospital care" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES with Lottie icons -->
+<section class="section" data-animate>
+  <div class="wrap">
+    <h2 class="section-title">Everything you need</h2>
+    <div class="grid grid-3">
+      <article class="card feature hover-lift">
+        <lottie-player
+          src="https://lottie.host/08e8b85a-1c70-4a1e-8f9d-7e4d12e2e1f1/p8b8g2xX9Q.json"
+          background="transparent" speed="1" loop autoplay class="lottie"></lottie-player>
+        <h3>Telehealth & In-clinic</h3>
+        <p>Simple scheduling for video or on-site visits with clear status and notes.</p>
+      </article>
+
+      <article class="card feature hover-lift">
+        <lottie-player
+          src="https://lottie.host/6211c6a7-4a0b-4e97-a61b-d7f9027c1a8d/Mm0yY3qP4S.json"
+          background="transparent" speed="1" loop autoplay class="lottie"></lottie-player>
+        <h3>Medication tracker</h3>
+        <p>Keep prescriptions organized with dosage, frequency, and refills.</p>
+      </article>
+
+      <article class="card feature hover-lift">
+        <lottie-player
+          src="https://lottie.host/3c8c1d25-6930-4a6a-9b65-6a7a97a6e0d8/M2qk0JjB6S.json"
+          background="transparent" speed="1" loop autoplay class="lottie"></lottie-player>
+        <h3>Doctor & patient profiles</h3>
+        <p>Clear profiles help doctors prep faster and patients stay informed.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS PREVIEW -->
+<section class="section soft" data-animate>
+  <div class="wrap">
+    <h2 class="section-title">Meet our specialists</h2>
+    <div class="grid grid-4">
+      <div class="card doc hover-lift">
+        <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=800&q=60" alt="Doctor portrait" loading="lazy">
+        <div class="doc-info">
+          <strong>Dr. Karen Dawson</strong>
+          <span>Cardiology</span>
+        </div>
+      </div>
+      <div class="card doc hover-lift">
+        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=800&q=60" alt="Doctor portrait" loading="lazy">
+        <div class="doc-info">
+          <strong>Dr. Jack Simmons</strong>
+          <span>Urology</span>
+        </div>
+      </div>
+      <div class="card doc hover-lift">
+        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=800&q=60" alt="Doctor portrait" loading="lazy">
+        <div class="doc-info">
+          <strong>Dr. Carrie Lin</strong>
+          <span>Surgery</span>
+        </div>
+      </div>
+      <div class="card doc hover-lift">
+        <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=800&q=60" alt="Doctor portrait" loading="lazy">
+        <div class="doc-info">
+          <strong>Dr. Michel Swedon</strong>
+          <span>Neurology</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="center mt-24">
+      <a class="btn" href="/doctors">Browse doctors</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" data-animate>
+  <div class="wrap">
+    <h2 class="section-title">Inside Medify</h2>
+    <div class="grid gallery">
+      <img class="hover-zoom" src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=1200&q=60" alt="Hospital corridor" loading="lazy">
+      <img class="hover-zoom" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=60" alt="Clinic lobby" loading="lazy">
+      <img class="hover-zoom" src="https://images.unsplash.com/photo-1582719478250-03f99a9d9f32?auto=format&fit=crop&w=1200&q=60" alt="Lab" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" data-animate>
+  <div class="wrap cta-inner">
+    <div>
+      <h3>Ready to book your next visit?</h3>
+      <p>It only takes a minute to schedule online.</p>
+    </div>
+    <a class="btn soft-bounce" href="/appointments/new">Make an appointment</a>
+  </div>
+</section>
