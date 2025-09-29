@@ -1,31 +1,32 @@
-const express = require('express');
+require('dotenv').config();
+
 const path = require('path');
-const morgan = require('morgan');
-const methodOverride = require('method-override');
-const expressLayouts = require('express-ejs-layouts');
+const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const expressLayouts = require('express-ejs-layouts');
 
-require('dotenv').config();
-require('./config/database'); // ensure the filename matches your config (database.js or db.js)
+require('./config/database');
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-// View engine / layouts
+/* ---------- Views ---------- */
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
-app.set('layout', 'layout'); // views/layout.ejs
+app.set('layout', 'layout');
 
-// Static + core middleware
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
-app.use(morgan('dev'));
+app.use(express.json());
 
-// Sessions (cookie stores only session id; data is in Mongo via connect-mongo)
-app.set('trust proxy', 1); // safe behind proxies in prod
+/* ---------- Static (no-cache in dev) ---------- */
+app.use(
+  express.static(path.join(__dirname, 'public'), {
+    maxAge: 0, etag: false, lastModified: false,
+  })
+);
+
+/* ---------- Sessions ---------- */
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'change-me',
@@ -33,40 +34,42 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI,
-      ttl: 60 * 60 * 24 * 7 // 7 days
+      dbName: 'medify',
+      collectionName: 'sessions',
+      touchAfter: 24 * 3600,
     }),
     cookie: {
       httpOnly: true,
       sameSite: 'lax',
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
-    }
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
   })
 );
 
-// Make session available to EJS
-app.use((req, res, next) => {
-  res.locals.session = req.session || null;
-  next();
-});
+// expose session to all views
+app.use((req, res, next) => { res.locals.session = req.session; next(); });
 
-// Home (simple placeholder; keep your pretty homepage if you have one)
+/* ---------- Routes ---------- */
+const authRoutes = require('./routes/auth');
+const dashRoutes = require('./routes/dashboard');
+const profileRoutes = require('./routes/profile');   // NEW
+const doctorRoutes = require('./routes/doctors');
+const apptRoutes = require('./routes/appointments');
+const medRoutes = require('./routes/medications');
+const rxRoutes = require('./routes/prescriptions');
+
 app.get('/', (req, res) => res.render('index'));
+app.use('/auth', authRoutes);
+app.use('/dashboard', dashRoutes);
+app.use('/profile', profileRoutes);                   // NEW
+// app.use('/patients', require('./routes/patients')); // removed from public UX
+app.use('/doctors', doctorRoutes);
+app.use('/appointments', apptRoutes);
+app.use('/medications', medRoutes);
+app.use('/prescriptions', rxRoutes);
 
-// Auth + dashboards
-app.use('/auth', require('./routes/auth'));
-app.use('/dashboard', require('./routes/dashboard'));
+app.use((_req, res) => res.status(404).send('Not found'));
 
-// Your existing CRUD resources stay as-is
-app.use('/patients', require('./routes/patients'));
-app.use('/doctors', require('./routes/doctors'));
-app.use('/appointments', require('./routes/appointments'));
-app.use('/medications', require('./routes/medications'));
-app.use('/prescriptions', require('./routes/prescriptions'));
-
-// 404
-app.use((req, res) => res.status(404).send('Not Found'));
-
-app.listen(port, () => {
-  console.log(` Medify running at http://localhost:${port}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(` Medify running at http://localhost:${PORT}`));

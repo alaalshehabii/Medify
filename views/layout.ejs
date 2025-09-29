@@ -4,11 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Medify</title>
-
-    <!-- Base styles -->
-    <link rel="stylesheet" href="/css/main.css">
-
-    <!-- Lottie (for animated icons) -->
+    <link rel="stylesheet" href="/css/main.css?v=<%= Date.now() %>">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
   </head>
   <body>
@@ -17,7 +13,6 @@
         <a class="brand" href="/">🩺 Medify</a>
 
         <div class="nav-links">
-          <a href="/patients">Patients</a>
           <a href="/doctors">Doctors</a>
           <a href="/appointments">Appointments</a>
           <a href="/medications">Medications</a>
@@ -26,15 +21,11 @@
 
         <div class="nav-cta">
           <% if (session?.user) { %>
-            <% if (session.user.role === 'doctor') { %>
-              <a href="/dashboard/doctor">Dashboard</a>
-            <% } else { %>
-              <a href="/dashboard/patient">Dashboard</a>
-            <% } %>
+            <a href="/profile">Profile</a>
             <a class="btn ghost" href="/auth/logout">Logout</a>
           <% } else { %>
             <a href="/auth/login">Login</a>
-            <a class="btn" href="/auth/signup/patient">Sign up</a>
+            <a class="btn" href="/auth/signup">Sign up</a>
           <% } %>
         </div>
       </nav>
@@ -50,12 +41,12 @@
         <div class="footer-links">
           <a href="/appointments">Book</a>
           <a href="/doctors">Our Doctors</a>
-          <a href="/patients">Patients</a>
+          <a href="/auth/login">Login</a>
         </div>
         <div class="footer-copy">© <%= new Date().getFullYear() %> Medify</div>
       </div>
     </footer>
 
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js?v=<%= Date.now() %>"></script>
   </body>
 </html>

@@ -1,27 +1,27 @@
-<div class="card" style="max-width:520px;margin:24px auto">
-  <h2>Log in</h2>
-  <% if (error) { %><p style="color:#c0392b"><%= error %></p><% } %>
 
-  <form method="POST" action="/auth/login">
-    <div class="field">
-      <label>Email</label>
-      <input name="email" type="email" required>
+<div class="wrap">
+  <div class="grid grid-2">
+    <div class="card">
+      <h2>Patient Login</h2>
+      <% if (typeof error !== 'undefined' && error) { %>
+        <p style="color:#b91c1c"><%= error %></p>
+      <% } %>
+      <form action="/auth/login" method="POST">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" name="password" required />
+        </div>
+        <button class="btn" type="submit">Login</button>
+        <a class="link" href="/auth/signup">Create a patient account</a>
+      </form>
     </div>
-
-    <div class="field">
-      <label>Password</label>
-      <div style="display:flex;gap:8px;align-items:center">
-        <input name="password" type="password" required style="flex:1">
-        <button class="btn ghost js-toggle-pass" type="button">Show</button>
-      </div>
+    <div class="card">
+      <h3>Welcome back</h3>
+      <p>Manage your profile, appointments, and medications in one place.</p>
     </div>
-
-    <button class="btn" type="submit">Log in</button>
-  </form>
-
-  <p style="margin-top:12px">
-    New here?
-    <a href="/auth/signup/patient">Sign up as Patient</a> ·
-    <a href="/auth/signup/doctor">Sign up as Doctor</a>
-  </p>
+  </div>
 </div>

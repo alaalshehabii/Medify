@@ -1,23 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
-  </head>
-  <body>
-    <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
-
-      <button type="submit">Sign up</button>
-    </form>
-  </body>
-</html>
+<div class="wrap">
+  <div class="grid grid-2">
+    <div class="card">
+      <h2>Create Patient Account</h2>
+      <% if (typeof error !== 'undefined' && error) { %>
+        <p style="color:#b91c1c"><%= error %></p>
+      <% } %>
+      <form action="/auth/signup" method="POST">
+        <div class="field">
+          <label for="fullName">Full name</label>
+          <input id="fullName" type="text" name="fullName" required />
+        </div>
+        <div class="field">
+          <label for="dob">Date of birth</label>
+          <input id="dob" type="date" name="dob" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" name="password" required />
+        </div>
+        <div class="field">
+          <label for="confirmPassword">Confirm password</label>
+          <input id="confirmPassword" type="password" name="confirmPassword" required />
+        </div>
+        <button class="btn" type="submit">Create account</button>
+        <a class="link" href="/auth/login">I already have an account</a>
+      </form>
+    </div>
+    <div class="card">
+      <h3>Why create an account?</h3>
+      <p>Save your details once and manage bookings & medications easily.</p>
+    </div>
+  </div>
+</div>

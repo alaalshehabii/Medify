@@ -1,24 +1,13 @@
-// routes/auth.js — login / logout / signup (patient & doctor)
 const router = require('express').Router();
-const {
-  viewLogin,
-  login,
-  logout,
-  viewSignupPatient,
-  signupPatient,
-  viewSignupDoctor,
-  signupDoctor
-} = require('../controllers/auth');
+const auth = require('../controllers/auth');
 
-router.get('/login', viewLogin);
-router.post('/login', login);
+// LOGIN / LOGOUT
+router.get('/login', auth.viewLogin);
+router.post('/login', auth.login);
+router.get('/logout', auth.logout);
 
-router.get('/logout', logout);
-
-router.get('/signup/patient', viewSignupPatient);
-router.post('/signup/patient', signupPatient);
-
-router.get('/signup/doctor', viewSignupDoctor);
-router.post('/signup/doctor', signupDoctor);
+// PATIENT SIGNUP ONLY
+router.get('/signup', auth.viewSignupPatient);       
+router.post('/signup', auth.signupPatient);
 
 module.exports = router;

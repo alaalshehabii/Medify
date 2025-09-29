@@ -1,0 +1,41 @@
+
+<div class="wrap">
+  <div class="card" style="margin-bottom:18px">
+    <h2 style="margin:0 0 6px">My Profile</h2>
+    <% if (saved) { %><p style="color:#065f46;margin:0">Saved successfully.</p><% } %>
+    <% if (error) { %><p style="color:#b91c1c;margin:0"><%= error %></p><% } %>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <form action="/profile" method="POST">
+        <div class="field">
+          <label for="full_name">Full name</label>
+          <input id="full_name" name="full_name" value="<%= patient?.full_name || '' %>" required>
+        </div>
+        <div class="field">
+          <label for="dob">Date of birth</label>
+          <input id="dob" type="date" name="dob" value="<%= patient?.dob ? patient.dob.toISOString().slice(0,10) : '' %>" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" value="<%= patient?.email || '' %>" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" value="<%= patient?.phone || '' %>">
+        </div>
+        <div class="field">
+          <label for="allergies">Allergies</label>
+          <textarea id="allergies" name="allergies" rows="3"><%= patient?.allergies || '' %></textarea>
+        </div>
+        <button class="btn" type="submit">Save changes</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Tips</h3>
+      <p>Keep your contact details up to date so your doctor can reach you quickly.</p>
+    </div>
+  </div>
+</div>
