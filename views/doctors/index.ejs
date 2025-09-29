@@ -1,0 +1,23 @@
+<section class="section" data-animate>
+  <div class="wrap">
+    <div class="card" style="margin-bottom:18px">
+      <h2 style="margin:0 0 10px">Our Doctors</h2>
+      <p class="lead" style="margin:0">Meet our trusted specialists. Book a visit in minutes.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <% (cards || []).forEach(function(doc){ %>
+        <article class="card hover-lift doc">
+          <img src="<%= doc.photo %>" alt="Doctor portrait" loading="lazy">
+          <div class="doc-info">
+            <strong><%= doc.full_name %></strong>
+            <span><%= doc.specialty %></span>
+            <% if (doc.bio) { %>
+              <p style="margin:8px 0 0;color:var(--muted)"><%= doc.bio %></p>
+            <% } %>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>

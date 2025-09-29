@@ -1,24 +1,23 @@
+
+
 /* ===============================
-   Medify — Pastel Green Theme
-   Minimal, calm UI with micro-interactions
+   Medify — Lilac → White Theme
    =============================== */
 
 :root{
-  /* Palette */
-  --bg-1:#f6fbf7;       /* pastel mint */
-  --bg-2:#f1f7f1;       /* soft sage */
-  --bg-3:#f9fcf6;       /* warm mint */
-  --text:#1f2a24;       /* deep sage ink */
-  --muted:#6b7c70;      /* muted sage */
-  --card:#ffffff;
-  --ring:rgba(31,42,36,.10);
-  --primary:#2ecc71;    /* brand green */
-  --primary-ink:#0f6a38;
+  --bg-lilac:   #efe7ff;         /* very light lilac */
+  --text:       #000000;         /* deep neutral */
+  --muted:      #6b6b7a;
+  --card:       #ffffff;
+  --ring:       rgba(31,31,42,.10);
 
-  /* FX */
-  --shadow: 0 10px 30px rgba(31,42,36,.08);
-  --radius:18px;
-  --transition:220ms cubic-bezier(.2,.7,.2,1);
+  /* Violet accents */
+  --primary:    #8b6ea9;         /* violet */
+  --primary-ink:#a177c3;
+
+  --shadow:     0 10px 30px rgba(185, 159, 200, 0.516);
+  --radius:     18px;
+  --transition: 220ms cubic-bezier(.2,.7,.2,1);
 }
 
 /* ---------- Page ---------- */
@@ -27,10 +26,11 @@ body{
   margin:0;
   color:var(--text);
   font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-  background:
-    radial-gradient(1200px 600px at -10% -10%, #eaf7ee, transparent 60%),
-    radial-gradient(1200px 600px at 110% 110%, #edf9f0, transparent 60%),
-    linear-gradient(180deg, var(--bg-1), var(--bg-2) 60%, var(--bg-3));
+
+  /* Lilac → White ombré */
+  background: #efe7ff; /* fallback */
+  background: radial-gradient(circle, rgba(239,231,255,1) 0%, rgba(255,255,255,1) 70%);
+  background-attachment: fixed;
 }
 
 /* ---------- Layout ---------- */
@@ -52,18 +52,18 @@ body{
 .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
 .grid{display:grid;gap:20px}
 .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-3{display:grid;gap:20px;grid-template-columns:repeat(3,1fr)}
 .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media (max-width:960px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr 1fr}}
+@media (max-width:960px){.grid-2,.grid-4{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
 
 /* ---------- Buttons ---------- */
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;border:none;
-  border-radius:12px;padding:10px 16px;text-decoration:none;box-shadow:0 6px 16px rgba(46,204,113,.25);
+  border-radius:12px;padding:10px 16px;text-decoration:none;box-shadow:0 6px 16px rgba(139,92,246,.25);
   transition:transform var(--transition), box-shadow var(--transition)}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(46,204,113,.35)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(139,92,246,.35)}
 .btn.ghost{background:#fff;color:var(--text);box-shadow:inset 0 0 0 1px var(--ring)}
-.link{margin-left:8px;color:#0ea5a3;text-decoration:none}
+.link{margin-left:8px;color:#703cbe;text-decoration:none}
 .link:hover{text-decoration:underline}
 
 /* ---------- Forms ---------- */
@@ -73,9 +73,9 @@ input,select,textarea{
   width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--ring);
   background:#fff;outline:none;transition:border-color var(--transition), box-shadow var(--transition)
 }
-input:focus,select:focus,textarea:focus{border-color:#9fdab5;box-shadow:0 0 0 3px rgba(46,204,113,.12)}
+input:focus,select:focus,textarea:focus{border-color:#c4b5fd;box-shadow:0 0 0 3px rgba(139,92,246,.12)}
 
-/* ---------- Tables (index lists) ---------- */
+/* ---------- Tables ---------- */
 .table{width:100%;border-collapse:separate;border-spacing:0 8px}
 .table th{font-size:14px;color:var(--muted);text-align:left;padding:0 12px}
 .table td{background:#fff;padding:14px 12px}
@@ -90,32 +90,36 @@ input:focus,select:focus,textarea:focus{border-color:#9fdab5;box-shadow:0 0 0 3p
 .lead{color:var(--muted);max-width:52ch}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
 
-/* Mosaic  */
-.mosaic{
-  display:grid;gap:12px;
-  grid-template-columns:repeat(4,1fr);
-  margin-top:18px; max-width:520px;
+/* ---------- Stats (cleaner, organized) ---------- */
+.stats{
+  display:grid;gap:16px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
 }
-.mosaic img{width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:16px; box-shadow:var(--shadow)}
-
-/* KPIs */
-.kpi-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px}
-.kpi{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;min-width:150px}
-.kpi .num{font-weight:800;font-size:24px;color:var(--primary-ink)}
-.kpi .label{color:var(--muted);font-size:13px}
+@media (max-width:900px){.stats{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.stats{grid-template-columns:1fr}}
+.stat{
+  background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:16px 18px;
+  display:flex;flex-direction:column;gap:4px
+}
+.stat .label{color:var(--muted);font-size:13px}
+.stat .num{font-weight:800;font-size:22px;color:var(--primary-ink)}
+.stat .hint{color:var(--muted);font-size:12px}
 
 /* ---------- Sections ---------- */
 .section{padding:28px 0}
-.section.soft{background:linear-gradient(180deg,#fff,rgba(255,255,255,.65))}
+.section.soft{background:rgba(255,255,255,.55);backdrop-filter:saturate(140%) blur(2px)}
 .section-title{margin:0 0 18px;font-size:26px}
 
-/* ---------- Features ---------- */
-.feature .lottie{width:64px;height:64px;margin-bottom:6px}
-.feature h3{margin:6px 0 4px}
-
 /* ---------- Doctors grid ---------- */
-.doc{background:#fff}                 /* crisp white cards */
-.doc img{width:100%;height:220px;object-fit:cover;border-radius:14px;background:#fff}
+.doc{background:#fff}
+.doc img{
+  width:100%;
+  aspect-ratio: 4 / 5;     /* consistent portrait */
+  height:auto;
+  object-fit: cover;
+  border-radius:14px;
+  background:#fff;
+}
 .doc-info{display:flex;flex-direction:column;margin-top:10px}
 .doc-info span{color:var(--muted);font-size:14px}
 
@@ -139,7 +143,7 @@ input:focus,select:focus,textarea:focus{border-color:#9fdab5;box-shadow:0 0 0 3p
 
 /* ---------- Micro-interactions ---------- */
 .hover-lift{transition:transform var(--transition), box-shadow var(--transition)}
-.hover-lift:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(31,42,36,.14)}
+.hover-lift:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(31,31,42,.14)}
 .hover-zoom{transition:transform 280ms cubic-bezier(.2,.7,.2,1)}
 .hover-zoom:hover{transform:scale(1.02)}
 .soft-bounce{animation:soft-bounce 1.8s ease-in-out infinite}
