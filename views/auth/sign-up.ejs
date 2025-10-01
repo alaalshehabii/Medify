@@ -1,38 +1,69 @@
 <div class="wrap">
   <div class="grid grid-2">
+    <!-- Left: form -->
     <div class="card">
-      <h2>Create Patient Account</h2>
+      <h2>Create account</h2>
+
       <% if (typeof error !== 'undefined' && error) { %>
-        <p style="color:#b91c1c"><%= error %></p>
+        <p style="color:#b91c1c;margin-top:8px;"><%= error %></p>
       <% } %>
-      <form action="/auth/signup" method="POST">
+
+      <!-- IMPORTANT: names must be name/email/password/confirm -->
+      <form action="/auth/signup" method="POST" id="signup-form" novalidate>
         <div class="field">
-          <label for="fullName">Full name</label>
-          <input id="fullName" type="text" name="fullName" required />
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" />
         </div>
-        <div class="field">
-          <label for="dob">Date of birth</label>
-          <input id="dob" type="date" name="dob" required />
-        </div>
+
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" type="email" name="email" required />
+          <input id="email" name="email" type="email" required autocomplete="email" />
         </div>
+
         <div class="field">
           <label for="password">Password</label>
-          <input id="password" type="password" name="password" required />
+          <input id="password" name="password" type="password" required autocomplete="new-password" />
         </div>
+
         <div class="field">
-          <label for="confirmPassword">Confirm password</label>
-          <input id="confirmPassword" type="password" name="confirmPassword" required />
+          <label for="confirm">Confirm password</label>
+          <input id="confirm" name="confirm" type="password" required autocomplete="new-password" />
         </div>
-        <button class="btn" type="submit">Create account</button>
-        <a class="link" href="/auth/login">I already have an account</a>
+
+        <button class="btn" type="submit">Sign up</button>
       </form>
+
+      <p class="mt-24">Already have an account?
+        <a class="link" href="/auth/login">Log in</a>
+      </p>
     </div>
+
+    <!-- Right: info -->
     <div class="card">
-      <h3>Why create an account?</h3>
-      <p>Save your details once and manage bookings & medications easily.</p>
+      <h3>Welcome to Medify</h3>
+      <p>Book in-clinic appointments and manage medications in one place.</p>
     </div>
   </div>
 </div>
+
+<script>
+  // Quick client-side check so users see mismatches immediately
+  (function () {
+    const form = document.getElementById('signup-form');
+    if (!form) return;
+    const pwd = form.querySelector('#password');
+    const confirm = form.querySelector('#confirm');
+
+    function validate() {
+      if (confirm.value && pwd.value !== confirm.value) {
+        confirm.setCustomValidity('Passwords do not match');
+      } else {
+        confirm.setCustomValidity('');
+      }
+    }
+    pwd.addEventListener('input', validate);
+    confirm.addEventListener('input', validate);
+    form.addEventListener('submit', validate);
+  })();
+</script>
+

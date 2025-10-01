@@ -1,0 +1,73 @@
+<section class="section">
+  <div class="wrap">
+    <h1>Book an appointment</h1>
+    <p class="lead">Choose your doctor, date, and a time. You must be signed in to book.</p>
+
+    <% if (err) { %>
+      <div class="card" style="border-left:4px solid #e74c3c;margin-bottom:16px;"><strong>Error:</strong> <%= err %></div>
+    <% } %>
+    <% if (msg) { %>
+      <div class="card" style="border-left:4px solid #2ecc71;margin-bottom:16px;"><strong>Success:</strong> <%= msg %></div>
+    <% } %>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 style="margin-top:0;">New booking</h3>
+
+        <% if (!canBook) { %>
+          <p class="lead">Please <a class="link" href="/auth/login?next=/appointments">log in</a> or <a class="link" href="/auth/signup">sign up</a> to book.</p>
+        <% } %>
+
+        <form action="/appointments/book" method="post" <%= canBook ? '' : 'style="opacity:.6;pointer-events:none;"' %>>
+          <div class="field">
+            <label for="doctorKey">Doctor</label>
+            <select id="doctorKey" name="doctorKey" required>
+              <option value="" hidden>Select a doctor</option>
+              <% doctors.forEach(d => { %>
+                <option value="<%= d.key %>"><%= d.name %> — <%= d.specialty %></option>
+              <% }) %>
+            </select>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="field">
+              <label for="date">Date</label>
+              <input id="date" name="date" type="date" required min="<%= new Date().toISOString().slice(0,10) %>">
+            </div>
+            <div class="field">
+              <label for="time">Time</label>
+              <input id="time" name="time" type="time" required step="1800">
+            </div>
+          </div>
+
+          <button class="btn" type="submit">Book</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0;">Your appointments</h3>
+        <% if (!canBook) { %>
+          <p class="lead">Log in to see your bookings.</p>
+        <% } else if (!myAppointments.length) { %>
+          <p class="lead">No appointments yet.</p>
+        <% } else { %>
+          <table class="table">
+            <thead>
+              <tr><th>Doctor</th><th>Specialty</th><th>Start</th></tr>
+            </thead>
+            <tbody>
+              <% myAppointments.forEach(a => { 
+                   const d = doctors.find(dd => dd.key === a.doctorKey) || { specialty: '' }; %>
+                <tr class="row">
+                  <td style="padding:12px 12px;"><%= a.doctorName %></td>
+                  <td style="padding:12px 12px;"><%= d.specialty %></td>
+                  <td style="padding:12px 12px;"><%= new Date(a.start).toLocaleString() %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
