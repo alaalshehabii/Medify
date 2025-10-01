@@ -1,23 +1,92 @@
-<section class="section" data-animate>
+<section class="section">
   <div class="wrap">
-    <div class="card" style="margin-bottom:18px">
-      <h2 style="margin:0 0 10px">Our Doctors</h2>
-      <p class="lead" style="margin:0">Meet our trusted specialists. Book a visit in minutes.</p>
-    </div>
+    <h1 class="specialists-header">Meet our expert specialists</h1>
+    <p class="specialists-sub">Experienced physicians across our key departments.</p>
 
-    <div class="grid grid-3">
-      <% (cards || []).forEach(function(doc){ %>
-        <article class="card hover-lift doc">
-          <img src="<%= doc.photo %>" alt="Doctor portrait" loading="lazy">
-          <div class="doc-info">
-            <strong><%= doc.full_name %></strong>
-            <span><%= doc.specialty %></span>
-            <% if (doc.bio) { %>
-              <p style="margin:8px 0 0;color:var(--muted)"><%= doc.bio %></p>
-            <% } %>
-          </div>
-        </article>
-      <% }) %>
+    <div class="grid grid-3 mt-24 specialists-grid">
+      <!-- 1 -->
+      <article class="doc-pro-card hover-lift">
+        <figure class="doc-avatar">
+          <img
+            src="https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg"
+            alt="Dr. Amelia Holloway"
+            referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <div class="doc-meta">
+          <div class="doc-name">Dr. Amelia Holloway </div>
+          <div class="doc-specialty">Pediatrics</div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="doc-pro-card hover-lift">
+        <figure class="doc-avatar">
+          <img
+            src="https://t4.ftcdn.net/jpg/03/53/46/99/360_F_353469909_Zq5oKTx9qpPcR8Z47XE84g6WGDyFddX3.jpg"
+            alt="Dr. Noor Malik"
+            referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <div class="doc-meta">
+          <div class="doc-name">Dr. Noor Malik </div>
+          <div class="doc-specialty">Cardiology</div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="doc-pro-card hover-lift">
+        <figure class="doc-avatar">
+          <img
+            src="https://www.shutterstock.com/image-photo/portrait-handsome-male-doctor-stethoscope-600nw-2480850611.jpg"
+            alt="Dr. Ethan Merrick"
+            referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <div class="doc-meta">
+          <div class="doc-name">Dr. Ethan Merrick</div>
+          <div class="doc-specialty">Orthopedics</div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="doc-pro-card hover-lift">
+        <figure class="doc-avatar">
+          <img
+            src="https://t4.ftcdn.net/jpg/01/36/18/77/360_F_136187711_qeBMOwkPdTg1dCN8e5TR1AmduXDz60Xn.jpg"
+            alt="Dr. Jared Colson"
+            referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <div class="doc-meta">
+          <div class="doc-name">Dr. Jared Colson</div>
+          <div class="doc-specialty">Dermatology</div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="doc-pro-card hover-lift">
+        <figure class="doc-avatar">
+          <img
+            src="https://media.istockphoto.com/id/1468678624/photo/nurse-hospital-employee-and-portrait-of-black-man-in-a-healthcare-wellness-and-clinic-feeling.jpg?s=612x612&w=0&k=20&c=AGQPyeEitUPVm3ud_h5_yVX4NKY9mVyXbFf50ZIEtQI="
+            alt="Dr. Calvin Pierce"
+            referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <div class="doc-meta">
+          <div class="doc-name">Dr. Calvin Pierce</div>
+          <div class="doc-specialty">Neurology</div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="doc-pro-card hover-lift">
+        <figure class="doc-avatar">
+          <img
+            src="https://t3.ftcdn.net/jpg/05/04/25/70/360_F_504257032_jBtwqNdvdMN9Xm6aDT0hcvtxDXPZErrn.jpg"
+            alt="Dr. Casey Hart"
+            referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <div class="doc-meta">
+          <div class="doc-name">Dr. Casey Hart</div>
+          <div class="doc-specialty">ENT (Otolaryngology)</div>
+        </div>
+      </article>
     </div>
   </div>
 </section>

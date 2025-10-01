@@ -21,3 +21,24 @@ const io = new IntersectionObserver(
   { threshold: 0.12 }
 );
 document.querySelectorAll('[data-animate]').forEach((el) => io.observe(el));
+
+// --- Doctors search: autosubmit on input/change with a tiny debounce
+(function () {
+  const form = document.querySelector('#doctor-search-form');
+  if (!form) return;
+
+  const input = form.querySelector('#doctor-search');
+  const select = form.querySelector('#doctor-specialty');
+
+  const debouncedSubmit = (() => {
+    let t;
+    return () => {
+      clearTimeout(t);
+      t = setTimeout(() => form.submit(), 300);
+    };
+  })();
+
+  if (input) input.addEventListener('input', debouncedSubmit);
+  if (select) select.addEventListener('change', () => form.submit());
+})();
+
