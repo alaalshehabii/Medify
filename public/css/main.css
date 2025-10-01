@@ -82,7 +82,7 @@ input:focus,select:focus,textarea:focus{border-color:#b5e7fd6d;box-shadow:0 0 0 
 /* ---------- Hero ---------- */
 .hero{
   padding:36px 0 8px;
-  background: none; /* remove any extra glow/shadow behind hero */
+  background:none; /* remove any extra glow/shadow behind hero */
 }
 .hero-grid{display:grid;gap:28px;grid-template-columns:1.1fr .9fr;align-items:center}
 .hero-copy h1{margin:0 0 8px;font-size:42px;line-height:1.15}
@@ -126,7 +126,7 @@ input:focus,select:focus,textarea:focus{border-color:#b5e7fd6d;box-shadow:0 0 0 
 .section.soft{background:rgba(255,255,255,.55);backdrop-filter:saturate(140%) blur(2px)}
 .section-title{margin:0 0 18px;font-size:26px}
 
-/* ---------- Doctors grid ---------- */
+/* ---------- Doctors grid (legacy image tiles used elsewhere) ---------- */
 .doc{background:#fff}
 .doc img{
   width:100%;
@@ -169,39 +169,57 @@ input:focus,select:focus,textarea:focus{border-color:#b5e7fd6d;box-shadow:0 0 0 
 [data-animate]{opacity:0;transform:translateY(8px);transition:opacity .6s ease, transform .6s ease}
 [data-animate].in{opacity:1;transform:none}
 
-/* ----- Specialists (Doctors) cards ----- */
+/* ===== Doctors (Specialists) — bigger cards, no overlap ===== */
 .specialists-header{ text-align:center; margin:0 0 6px; }
 .specialists-sub{ text-align:center; color:var(--muted); }
 
-/* Light-blue card */
+/* Larger light-blue card with consistent layout */
 .specialists-grid .doc-pro-card{
-  background:#f3f8ff; /* light blue square */
-  border-radius:22px;
+  background:#f5f9ff;                 /* light blue square */
+  border-radius:24px;
   box-shadow:var(--shadow);
-  padding:22px;
+  padding:24px 28px;
   display:grid;
-  grid-template-columns:120px 1fr;
-  gap:18px;
-  align-items:center;
+  grid-template-columns: 120px 1fr;   /* bigger avatar | text */
+  gap:22px;
+  align-items:center;                  /* vertically center avatar + text */
+  min-height:150px;                    /* taller card for balance */
 }
 
-/* Circular avatar with the photo inside */
+/* Clear circular avatar with only soft blue shadow; photo fills circle */
 .doc-avatar{
-  width:110px; height:110px; border-radius:50%;
-  overflow:hidden; display:grid; place-items:center;
-  background:#dfe9ff; /* fallback if image fails */
-  box-shadow: 0 6px 18px rgba(156,191,233,.22);
-  border:4px solid #e8f0ff; /* soft ring */
+  margin:0;                            /* prevent default figure margins (fixes overlap) */
+  width:120px; height:120px;           /* bigger circle */
+  border-radius:50%;
+  overflow:hidden; background:transparent;
+  box-shadow:0 10px 22px rgba(144,198,255,.28);
 }
 .doc-avatar img{
-  width:100%; height:100%; object-fit:cover; border-radius:50%;
+  display:block;
+  width:100%; height:100%;
+  object-fit:cover; border-radius:50%;
 }
 
-.doc-meta{ display:grid; gap:4px; }
-.doc-name{ font-weight:800; font-size:18px; }
-.doc-specialty{ color:var(--primary-ink); font-size:14px; }
+/* Text column — centered and spaced */
+.doc-meta{
+  display:flex; flex-direction:column; justify-content:center;
+  min-width:0;
+}
+.doc-name{
+  margin:0 0 4px;
+  font-weight:800; font-size:20px; line-height:1.2;
+}
+.doc-specialty{
+  margin:0;
+  color:#526476; font-size:15px; line-height:1.3;
+}
 
+/* Mobile: stack neatly and keep text centered */
 @media (max-width: 760px){
-  .specialists-grid .doc-pro-card{ grid-template-columns:1fr; text-align:center; }
-  .doc-meta{ justify-items:center; }
+  .specialists-grid .doc-pro-card{
+    grid-template-columns:1fr;
+    text-align:center;
+    min-height:unset;
+  }
+  .doc-meta{ align-items:center; }
 }
