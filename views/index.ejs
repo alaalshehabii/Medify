@@ -5,38 +5,42 @@
 
       <!-- LEFT TEXT -->
       <div class="hero-copy">
-        <h1>Care that feels <span class="brand-accent">calm and modern.</span></h1>
+        <h1>Your health is our top priority.</h1>
         <p class="lead">
-          Book in-clinic or online appointments, track your medications, and manage prescriptions — all in one place.
+          Book in clinic appointments, track your medications, and manage prescriptions in one place.
         </p>
         <div class="cta-row">
-          <a href="/patients/new" class="btn">Create patient account</a>
+          <a href="/auth/signup" class="btn">Create patient account</a>
           <a href="/auth/login" class="btn ghost">I already have an account</a>
         </div>
 
-        <!-- Hospital-focused feature tiles (with your colors) -->
+        <!-- Hospital-focused feature tiles (blue gradients) -->
         <div class="stats mt-24">
-          <div class="stat" style="background:#f9e7f0;">  <!-- light pink -->
+          <div class="stat"
+               style="background: linear-gradient(135deg, #ecf2f8 0%, #dbecfd 100%);">
             <span class="label">Appointments</span>
-            <span class="num">Book Online / In-Clinic</span>
+            <span class="num">Book in clinic</span>
             <span class="hint">Choose a time that works for you</span>
           </div>
 
-          <div class="stat" style="background:#ffffe0;">  <!-- light yellow -->
+          <div class="stat"
+               style="background: linear-gradient(135deg, #e0eefd 0%, #c5e2fd 100%);">
             <span class="label">Doctors</span>
-            <span class="num">Find the Right Specialist</span>
+            <span class="num">Find the right specialist</span>
             <span class="hint">Search by name or specialty</span>
           </div>
 
-          <div class="stat" style="background:#e6f4ff;">  <!-- light blue -->
+          <div class="stat"
+               style="background: linear-gradient(135deg, #cfe8fd 0%, #bedfff 100%);">
             <span class="label">Medications</span>
-            <span class="num">Track Doses & Reminders</span>
+            <span class="num">Track doses & reminders</span>
             <span class="hint">Stay on schedule with alerts</span>
           </div>
 
-          <div class="stat" style="background:#e9fae9;">  <!-- light orange -->
+          <div class="stat"
+               style="background: linear-gradient(135deg, #c8defd 0%, #a8d4ff 100%);">
             <span class="label">Prescriptions</span>
-            <span class="num">Easy Refills</span>
+            <span class="num">Easy refills</span>
             <span class="hint">Request renewals in seconds</span>
           </div>
         </div>
@@ -46,8 +50,8 @@
       <div class="hero-media">
         <div class="media-frame">
           <img
-            src="https://t4.ftcdn.net/jpg/03/88/00/37/360_F_388003741_3pDGioOwlLIEr0Af2DaepDlLxc3tgqUZ.jpg"
-            alt="Hospital building">
+            src="https://cdn.prod.website-files.com/66bd394eedeb9d6ee29898c6/682f5450a046c241920c1e6f_Three%20doctors%20standing%20side%20by%20side%2C%20crossing%20their%20arms.jpg"
+            alt="Doctors standing side by side">
         </div>
       </div>
     </div>
@@ -58,28 +62,42 @@
 <section class="section soft">
   <div class="wrap">
     <h2 class="section-title">Inside Medify</h2>
-    <p class="lead">A simple, patient-first experience — from scheduling to follow-up.</p>
+    <p class="lead">A simple, patient first experience from scheduling to follow up.</p>
 
     <div class="grid grid-3 mt-24">
-      <!-- Removed Lab card -->
+      <!-- Doctors -->
       <div class="card hover-lift">
-        <img src="/images/doctor.jpg" alt="Doctors" />
+        <img
+          src="https://media.istockphoto.com/id/512278456/photo/group-of-doctors-at-the-hospital.jpg?s=612x612&w=0&k=20&c=EPPHeKuq0YabUC-QCWlAOhTfIZAAPtrwQ96V_Wp0oKY="
+          alt="Doctors team"
+          style="width:100%;height:200px;object-fit:cover;border-radius:14px;display:block"
+          onerror="this.style.display='none';">
         <h3>Doctors</h3>
         <p>Browse specialists and view clinic details.</p>
       </div>
 
+      <!-- Appointments -->
       <div class="card hover-lift">
-        <img src="/images/appointments.jpg" alt="Appointments" />
+        <img
+          src="https://www.shutterstock.com/image-photo/stethoscope-on-white-blank-calendar-600nw-2501558353.jpg"
+          alt="Appointments calendar"
+          style="width:100%;height:200px;object-fit:cover;border-radius:14px;display:block"
+          onerror="this.style.display='none';">
         <h3>Appointments</h3>
-        <p>Book or manage your visits with a few taps.</p>
+        <p>Book or manage your in clinic visits with a few taps.</p>
       </div>
 
+      <!-- Medications -->
       <div class="card hover-lift">
-        <!-- If you don't have this image yet, add /public/images/medications.jpg or keep this card without an image -->
-        <img src="/images/medications.jpg" alt="Medications" onerror="this.style.display='none';" />
+        <img
+          src="https://www.lacare.org/sites/default/files/2025-04/pharmacy-services-hero-040925.png"
+          alt="Medications and pharmacy services"
+          style="width:100%;height:200px;object-fit:cover;border-radius:14px;display:block"
+          onerror="this.style.display='none';">
         <h3>Medications</h3>
         <p>Track doses, set reminders, and avoid missed refills.</p>
       </div>
     </div>
   </div>
 </section>
+
