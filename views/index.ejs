@@ -1,79 +1,85 @@
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
 
+      <!-- LEFT TEXT -->
+      <div class="hero-copy">
+        <h1>Care that feels <span class="brand-accent">calm and modern.</span></h1>
+        <p class="lead">
+          Book in-clinic or online appointments, track your medications, and manage prescriptions — all in one place.
+        </p>
+        <div class="cta-row">
+          <a href="/patients/new" class="btn">Create patient account</a>
+          <a href="/auth/login" class="btn ghost">I already have an account</a>
+        </div>
 
-<!-- HERO -->
-<section class="hero" data-animate>
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1>Care that feels <span class="brand-accent">calm and modern</span>.</h1>
-      <p class="lead">
-        Book telehealth or in-clinic visits, track medications and prescriptions, and
-        keep everyone aligned — in one place.
-      </p>
-      <div class="cta-row">
-        <% if (!session?.user) { %>
-          <a class="btn" href="/auth/signup">Create patient account</a>
-          <a class="btn ghost" href="/auth/login">I already have an account</a>
-        <% } else { %>
-          <a class="btn" href="/profile">Go to my profile</a>
-          <a class="link" href="/appointments/new">Book an appointment →</a>
-        <% } %>
+        <!-- Hospital-focused feature tiles (with your colors) -->
+        <div class="stats mt-24">
+          <div class="stat" style="background:#f9e7f0;">  <!-- light pink -->
+            <span class="label">Appointments</span>
+            <span class="num">Book Online / In-Clinic</span>
+            <span class="hint">Choose a time that works for you</span>
+          </div>
+
+          <div class="stat" style="background:#ffffe0;">  <!-- light yellow -->
+            <span class="label">Doctors</span>
+            <span class="num">Find the Right Specialist</span>
+            <span class="hint">Search by name or specialty</span>
+          </div>
+
+          <div class="stat" style="background:#e6f4ff;">  <!-- light blue -->
+            <span class="label">Medications</span>
+            <span class="num">Track Doses & Reminders</span>
+            <span class="hint">Stay on schedule with alerts</span>
+          </div>
+
+          <div class="stat" style="background:#e9fae9;">  <!-- light orange -->
+            <span class="label">Prescriptions</span>
+            <span class="num">Easy Refills</span>
+            <span class="hint">Request renewals in seconds</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Stats (organized, compact) -->
-      <div class="stats mt-24">
-        <div class="stat">
-          <div class="label">Appointment types</div>
-          <div class="num">Telehealth & In-clinic</div>
-          <div class="hint">Flexible scheduling that fits your day</div>
-        </div>
-        <div class="stat">
-          <div class="label">Average wait</div>
-          <div class="num">Under 10 minutes</div>
-          <div class="hint">For virtual visits</div>
-        </div>
-        <div class="stat">
-          <div class="label">Medication tools</div>
-          <div class="num">Tracker & Refills</div>
-          <div class="hint">Follow dosage, never miss a dose</div>
-        </div>
-        <div class="stat">
-          <div class="label">Privacy</div>
-          <div class="num">Secure by design</div>
-          <div class="hint">Role-based access, sessions in Mongo</div>
+      <!-- RIGHT IMAGE -->
+      <div class="hero-media">
+        <div class="media-frame">
+          <img
+            src="https://t4.ftcdn.net/jpg/03/88/00/37/360_F_388003741_3pDGioOwlLIEr0Af2DaepDlLxc3tgqUZ.jpg"
+            alt="Hospital building">
         </div>
       </div>
-    </div>
-
-    <div class="hero-media hover-lift">
-      <img
-        src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1400&q=60"
-        alt="Modern hospital care" loading="lazy"/>
     </div>
   </div>
 </section>
 
-<!-- Optional: Inside Medify -->
-<section class="section soft" data-animate>
+<!-- Inside Medify -->
+<section class="section soft">
   <div class="wrap">
     <h2 class="section-title">Inside Medify</h2>
-    <p class="lead" style="max-width:60ch;margin:8px 0 18px">
-      A simple, patient-first experience — from scheduling to follow-up.
-    </p>
-    <div class="grid gallery">
-      <img class="hover-zoom" src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=1200&q=60" alt="Hospital corridor" loading="lazy">
-      <img class="hover-zoom" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=60" alt="Clinic lobby" loading="lazy">
-      <img class="hover-zoom" src="https://images.unsplash.com/photo-1582719478250-03f99a9d9f32?auto=format&fit=crop&w=1200&q=60" alt="Lab" loading="lazy">
-    </div>
-  </div>
-</section>
+    <p class="lead">A simple, patient-first experience — from scheduling to follow-up.</p>
 
-<!-- CTA -->
-<section class="cta-band" data-animate>
-  <div class="wrap cta-inner">
-    <div>
-      <h3>Ready to book your next visit?</h3>
-      <p>It only takes a minute to schedule online.</p>
+    <div class="grid grid-3 mt-24">
+      <!-- Removed Lab card -->
+      <div class="card hover-lift">
+        <img src="/images/doctor.jpg" alt="Doctors" />
+        <h3>Doctors</h3>
+        <p>Browse specialists and view clinic details.</p>
+      </div>
+
+      <div class="card hover-lift">
+        <img src="/images/appointments.jpg" alt="Appointments" />
+        <h3>Appointments</h3>
+        <p>Book or manage your visits with a few taps.</p>
+      </div>
+
+      <div class="card hover-lift">
+        <!-- If you don't have this image yet, add /public/images/medications.jpg or keep this card without an image -->
+        <img src="/images/medications.jpg" alt="Medications" onerror="this.style.display='none';" />
+        <h3>Medications</h3>
+        <p>Track doses, set reminders, and avoid missed refills.</p>
+      </div>
     </div>
-    <a class="btn soft-bounce" href="/appointments/new">Make an appointment</a>
   </div>
 </section>

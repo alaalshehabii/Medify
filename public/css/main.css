@@ -1,21 +1,19 @@
-
-
 /* ===============================
    Medify — Lilac → White Theme
    =============================== */
 
 :root{
-  --bg-lilac:   #efe7ff;         /* very light lilac */
+  --bg-lilac:   #ebffe7;         /* very light lilac */
   --text:       #000000;         /* deep neutral */
-  --muted:      #6b6b7a;
+  --muted:      #6d7a6b;
   --card:       #ffffff;
-  --ring:       rgba(31,31,42,.10);
+  --ring:       rgba(33, 42, 31, 0.1);
 
   /* Violet accents */
-  --primary:    #8b6ea9;         /* violet */
-  --primary-ink:#a177c3;
+  --primary:    #3b7c46;         /* violet */
+  --primary-ink:#152819;
 
-  --shadow:     0 10px 30px rgba(185, 159, 200, 0.516);
+  --shadow:     0 10px 30px rgba(178, 208, 175, 0.463);
   --radius:     18px;
   --transition: 220ms cubic-bezier(.2,.7,.2,1);
 }
@@ -28,8 +26,8 @@ body{
   font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
 
   /* Lilac → White ombré */
-  background: #efe7ff; /* fallback */
-  background: radial-gradient(circle, rgba(239,231,255,1) 0%, rgba(255,255,255,1) 70%);
+  background: #e7fff0; /* fallback */
+  background: radial-gradient(circle, rgb(231, 255, 239) 0%, rgba(255,255,255,1) 70%);
   background-attachment: fixed;
 }
 
@@ -61,9 +59,9 @@ body{
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;border:none;
   border-radius:12px;padding:10px 16px;text-decoration:none;box-shadow:0 6px 16px rgba(139,92,246,.25);
   transition:transform var(--transition), box-shadow var(--transition)}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(139,92,246,.35)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(92, 246, 120, 0.35)}
 .btn.ghost{background:#fff;color:var(--text);box-shadow:inset 0 0 0 1px var(--ring)}
-.link{margin-left:8px;color:#703cbe;text-decoration:none}
+.link{margin-left:8px;color:#3cbe67;text-decoration:none}
 .link:hover{text-decoration:underline}
 
 /* ---------- Forms ---------- */
@@ -73,7 +71,7 @@ input,select,textarea{
   width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--ring);
   background:#fff;outline:none;transition:border-color var(--transition), box-shadow var(--transition)
 }
-input:focus,select:focus,textarea:focus{border-color:#c4b5fd;box-shadow:0 0 0 3px rgba(139,92,246,.12)}
+input:focus,select:focus,textarea:focus{border-color:#b5fdba;box-shadow:0 0 0 3px rgba(92, 246, 128, 0.12)}
 
 /* ---------- Tables ---------- */
 .table{width:100%;border-collapse:separate;border-spacing:0 8px}
@@ -84,11 +82,26 @@ input:focus,select:focus,textarea:focus{border-color:#c4b5fd;box-shadow:0 0 0 3p
 /* ---------- Hero ---------- */
 .hero{padding:36px 0 8px}
 .hero-grid{display:grid;gap:28px;grid-template-columns:1.1fr .9fr;align-items:center}
-.hero-media img{width:100%;height:auto;border-radius:22px;box-shadow:var(--shadow)}
 .hero-copy h1{margin:0 0 8px;font-size:42px;line-height:1.15}
 .brand-accent{color:var(--primary-ink)}
 .lead{color:var(--muted);max-width:52ch}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+
+/* Hero media fix */
+.hero-media .media-frame{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;    /* keeps consistent frame */
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+.hero-media .media-frame img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit: cover;
+}
 
 /* ---------- Stats (cleaner, organized) ---------- */
 .stats{
@@ -143,7 +156,7 @@ input:focus,select:focus,textarea:focus{border-color:#c4b5fd;box-shadow:0 0 0 3p
 
 /* ---------- Micro-interactions ---------- */
 .hover-lift{transition:transform var(--transition), box-shadow var(--transition)}
-.hover-lift:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(31,31,42,.14)}
+.hover-lift:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(31, 42, 35, 0.14)}
 .hover-zoom{transition:transform 280ms cubic-bezier(.2,.7,.2,1)}
 .hover-zoom:hover{transform:scale(1.02)}
 .soft-bounce{animation:soft-bounce 1.8s ease-in-out infinite}
