@@ -1,15 +1,35 @@
 <%- include('../partials/header') %>
 
-<section class="section">
-  <h1 class="page-title">Meet our expert specialists</h1>
+<section class="section container">
+  <h1 class="page-title center">Meet our expert specialists</h1>
   <p class="muted center">Experienced physicians across our key departments.</p>
 
+  <%
+  // Map doctor names to local image filenames (in /public/img)
+  const PHOTOS = {
+    'Dr. Amelia Holloway': '/img/amelia.jpg',
+    'Dr. Calvin Pierce':   '/img/calvin.jpg',
+    'Dr. Ethan Merrick':   '/img/ethan.jpg',
+    'Dr. Casey Hart':      '/img/casey.jpg.webp',
+    'Dr. Jared Colson':    '/img/jared.jpg',
+    'Dr. Noor Malik':      '/img/noor.jpg',
+  };
+
+  // Fallback (only used if a local file is missing)
+  const FALLBACK = 'https://picsum.photos/seed/medify/400/400';
+  %>
+
   <div class="doctors-grid">
-    <% doctors.forEach(d => { %>
+    <% doctors.forEach(d => { const src = PHOTOS[d.fullName]; %>
       <article class="doctor-card">
         <div class="doctor-photo">
-          <img src="<%= d.photoUrl %>" alt="<%= d.fullName %>"
-               onerror="this.src='/img/doctor-placeholder.jpg'">
+          <img
+            src="<%= src %>"
+            alt="<%= d.fullName %>"
+            width="160" height="160"
+            loading="lazy" decoding="async"
+            onerror="this.onerror=null; this.src='<%= FALLBACK %>';"
+          >
         </div>
         <div class="doctor-info">
           <h3><%= d.fullName %></h3>
