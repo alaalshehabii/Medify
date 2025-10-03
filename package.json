@@ -1,23 +1,23 @@
 {
   "name": "medify",
   "version": "1.0.0",
-  "description": "Health & Wellness Management System (Telehealth Appointments + Medication Tracker)",
+  "type": "commonjs",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed:doctors": "node -e \"require('./config/database'); const Doctor=require('./models/Doctor'); (async()=>{await Doctor.deleteMany({}); await Doctor.insertMany([{fullName:'Dr. Sara Ahmed',specialty:'Cardiology',photoUrl:'/img/doc1.jpg'},{fullName:'Dr. Ali Hassan',specialty:'Dermatology',photoUrl:'/img/doc2.jpg'},{fullName:'Dr. Noor Yusuf',specialty:'Pediatrics',photoUrl:'/img/doc3.jpg'}]); console.log('Seeded doctors'); process.exit(0)})()\""
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
+    "bcrypt": "^5.1.1",
     "connect-mongo": "^5.1.0",
-    "dotenv": "^16.6.1",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^4.21.2",
-    "express-ejs-layouts": "^2.5.1",
-    "express-session": "^1.18.2",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
     "method-override": "^3.0.0",
-    "mongoose": "^8.18.2",
-    "morgan": "^1.10.1"
+    "mongoose": "^8.6.3",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

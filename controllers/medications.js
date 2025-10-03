@@ -1,68 +1,65 @@
-// controllers/medications.js — CRUD for medication catalog
 const Medication = require('../models/Medication');
 
-exports.index = async (_req, res) => {
-  try {
-    const medications = await Medication.find().sort({ name: 1 }).lean();
-    res.render('medications/index', { medications });
-  } catch (err) {
-    console.error('Medications#index error:', err);
-    res.status(500).render('medications/index', { medications: [] });
-  }
+exports.index = async (req, res) => {
+  const meds = await Medication.find({ user: req.session.userId }).sort('-createdAt').lean();
+  res.render('medications/index', { title: 'My Medications', meds });
 };
-
-exports.new = (_req, res) => res.render('medications/new');
 
 exports.create = async (req, res) => {
+  const { name, dosage, timesPerDay, timing = [], notes } = req.body;
   try {
-    const { name, form, strength } = req.body;
-    await Medication.create({ name, form, strength });
-    res.redirect('/medications');
-  } catch (err) {
-    console.error('Medications#create error:', err);
-    res.status(400).render('medications/new', { error: 'Could not add medication' });
+    await Medication.create({
+      user: req.session.userId,
+      name: name?.trim(),
+      dosage: dosage?.trim(),
+      timesPerDay: Number(timesPerDay || 1),
+      timing: Array.isArray(timing) ? timing : [timing].filter(Boolean),
+      notes: notes?.trim()
+    });
+    req.session.flash = { type: 'success', message: 'Medication added.' };
+  } catch (e) {
+    console.error(e);
+    req.session.flash = { type: 'error', message: 'Failed to add medication.' };
   }
+  res.redirect('/medications');
 };
 
-exports.show = async (req, res) => {
-  try {
-    const medication = await Medication.findById(req.params.id).lean();
-    if (!medication) return res.status(404).send('Not found');
-    res.render('medications/show', { medication });
-  } catch (err) {
-    console.error('Medications#show error:', err);
-    res.status(500).send('Error');
-  }
-};
-
-exports.edit = async (req, res) => {
-  try {
-    const medication = await Medication.findById(req.params.id).lean();
-    if (!medication) return res.status(404).send('Not found');
-    res.render('medications/edit', { medication });
-  } catch (err) {
-    console.error('Medications#edit error:', err);
-    res.status(500).send('Error');
-  }
+exports.editForm = async (req, res) => {
+  const med = await Medication.findOne({ _id: req.params.id, user: req.session.userId }).lean();
+  if (!med) return res.status(404).render('404', { title: 'Not found' });
+  res.render('medications/edit', { title: 'Edit Medication', med });
 };
 
 exports.update = async (req, res) => {
+  const { name, dosage, timesPerDay, timing = [], notes } = req.body;
   try {
-    const { name, form, strength } = req.body;
-    await Medication.findByIdAndUpdate(req.params.id, { name, form, strength }, { runValidators: true });
-    res.redirect(`/medications/${req.params.id}`);
-  } catch (err) {
-    console.error('Medications#update error:', err);
-    res.status(400).send('Update failed');
+    await Medication.updateOne(
+      { _id: req.params.id, user: req.session.userId },
+      {
+        $set: {
+          name: name?.trim(),
+          dosage: dosage?.trim(),
+          timesPerDay: Number(timesPerDay || 1),
+          timing: Array.isArray(timing) ? timing : [timing].filter(Boolean),
+          notes: notes?.trim()
+        }
+      }
+    );
+    req.session.flash = { type: 'success', message: 'Medication updated.' };
+  } catch (e) {
+    console.error(e);
+    req.session.flash = { type: 'error', message: 'Failed to update medication.' };
   }
+  res.redirect('/medications');
 };
 
-exports.destroy = async (req, res) => {
+exports.remove = async (req, res) => {
   try {
-    await Medication.findByIdAndDelete(req.params.id);
-    res.redirect('/medications');
-  } catch (err) {
-    console.error('Medications#destroy error:', err);
-    res.status(500).send('Delete failed');
+    await Medication.deleteOne({ _id: req.params.id, user: req.session.userId });
+    req.session.flash = { type: 'success', message: 'Medication deleted.' };
+  } catch (e) {
+    console.error(e);
+    req.session.flash = { type: 'error', message: 'Failed to delete medication.' };
   }
+  res.redirect('/medications');
 };

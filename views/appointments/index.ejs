@@ -1,73 +1,58 @@
-<section class="section">
-  <div class="wrap">
-    <h1>Book an appointment</h1>
-    <p class="lead">Choose your doctor, date, and a time. You must be signed in to book.</p>
+<%- include('../partials/header') %>
+<h1>My Appointments</h1>
 
-    <% if (err) { %>
-      <div class="card" style="border-left:4px solid #e74c3c;margin-bottom:16px;"><strong>Error:</strong> <%= err %></div>
-    <% } %>
-    <% if (msg) { %>
-      <div class="card" style="border-left:4px solid #2ecc71;margin-bottom:16px;"><strong>Success:</strong> <%= msg %></div>
-    <% } %>
+<form class="card form" action="/appointments" method="post">
+  <div class="row">
+    <label>Doctor
+      <select name="doctor" required>
+        <option value="">Select…</option>
+        <% doctors.forEach(d => { %>
+          <option value="<%= d._id %>"><%= d.fullName %> — <%= d.specialty %></option>
+        <% }) %>
+      </select>
+    </label>
 
-    <div class="grid grid-2">
-      <div class="card">
-        <h3 style="margin-top:0;">New booking</h3>
+    <label>Date
+      <input type="date" name="date" required>
+    </label>
 
-        <% if (!canBook) { %>
-          <p class="lead">Please <a class="link" href="/auth/login?next=/appointments">log in</a> or <a class="link" href="/auth/signup">sign up</a> to book.</p>
-        <% } %>
+    <label>Time (AM/PM)
+      <select name="time12" required>
+        <option value="">Select time…</option>
+        <% (slots || []).forEach(s => { %>
+          <option value="<%= s %>"><%= s %></option>
+        <% }) %>
+      </select>
+      <small class="muted">30-minute slots • AM/PM</small>
+    </label>
+  </div>
 
-        <form action="/appointments/book" method="post" <%= canBook ? '' : 'style="opacity:.6;pointer-events:none;"' %>>
-          <div class="field">
-            <label for="doctorKey">Doctor</label>
-            <select id="doctorKey" name="doctorKey" required>
-              <option value="" hidden>Select a doctor</option>
-              <% doctors.forEach(d => { %>
-                <option value="<%= d.key %>"><%= d.name %> — <%= d.specialty %></option>
-              <% }) %>
-            </select>
-          </div>
+  <label>Notes<textarea name="notes" rows="2"></textarea></label>
+  <button class="btn">Book appointment</button>
+</form>
 
-          <div class="grid grid-2">
-            <div class="field">
-              <label for="date">Date</label>
-              <input id="date" name="date" type="date" required min="<%= new Date().toISOString().slice(0,10) %>">
-            </div>
-            <div class="field">
-              <label for="time">Time</label>
-              <input id="time" name="time" type="time" required step="1800">
-            </div>
-          </div>
-
-          <button class="btn" type="submit">Book</button>
+<div class="list">
+  <% if (!appts.length) { %>
+    <p class="muted">No appointments yet.</p>
+  <% } %>
+  <% appts.forEach(a => { %>
+    <div class="card list-item">
+      <div>
+        <h3><%= a.doctor?.fullName %> — <%= a.doctor?.specialty %></h3>
+        <p class="muted">
+          <%= new Date(a.startsAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) %>
+          →
+          <%= new Date(a.endsAt).toLocaleTimeString(undefined, { timeStyle: 'short' }) %>
+        </p>
+        <% if (a.notes) { %><p><%= a.notes %></p><% } %>
+      </div>
+      <div class="actions">
+        <a class="btn-out" href="/appointments/<%= a._id %>/edit">Edit</a>
+        <form action="/appointments/<%= a._id %>/delete" method="post" onsubmit="return confirm('Cancel this appointment?');">
+          <button class="btn-danger">Cancel</button>
         </form>
       </div>
-
-      <div class="card">
-        <h3 style="margin-top:0;">Your appointments</h3>
-        <% if (!canBook) { %>
-          <p class="lead">Log in to see your bookings.</p>
-        <% } else if (!myAppointments.length) { %>
-          <p class="lead">No appointments yet.</p>
-        <% } else { %>
-          <table class="table">
-            <thead>
-              <tr><th>Doctor</th><th>Specialty</th><th>Start</th></tr>
-            </thead>
-            <tbody>
-              <% myAppointments.forEach(a => { 
-                   const d = doctors.find(dd => dd.key === a.doctorKey) || { specialty: '' }; %>
-                <tr class="row">
-                  <td style="padding:12px 12px;"><%= a.doctorName %></td>
-                  <td style="padding:12px 12px;"><%= d.specialty %></td>
-                  <td style="padding:12px 12px;"><%= new Date(a.start).toLocaleString() %></td>
-                </tr>
-              <% }) %>
-            </tbody>
-          </table>
-        <% } %>
-      </div>
     </div>
-  </div>
-</section>
+  <% }) %>
+</div>
+<%- include('../partials/footer') %>

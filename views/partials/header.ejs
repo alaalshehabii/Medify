@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Medify</title>
-  <style>
-    :root{
-      --text:#000; --muted:#6d7a6b; --card:#fff; --primary:#6685a2;
-      --shadow:0 10px 30px rgba(175,190,208,.25); --radius:18px;
-    }
-    body{margin:0;background:radial-gradient(circle,#f2f8ff 0%,#eaf4ff 100%);color:var(--text);
-         font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;}
-    .container{padding:0 16px;max-width:1100px;margin:0 auto;}
-    .muted{color:var(--muted)}
-    header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px}
-    a{color:inherit;text-decoration:none}
-    .btn{padding:8px 12px;border-radius:12px;background:var(--primary);color:#fff}
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title><%= typeof title !== 'undefined' ? title : 'Medify' %></title>
+  <!-- served from /public/styles.css via express.static -->
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-<header class="container">
-  <div><a href="/" style="font-weight:700">Medify</a></div>
-  <nav style="display:flex;gap:16px;align-items:center;">
-    <a href="/appointments">Appointments</a>
-    <a href="/appointments/new" class="btn">Book</a>
-    <% if (typeof currentUser !== 'undefined' && currentUser) { %>
-      <span class="muted">Hi, <%= currentUser.name || 'Patient' %></span>
-      <a href="/logout">Logout</a>
-    <% } else { %>
-      <a href="/login">Login</a>
-      <a href="/signup" class="btn">Sign up</a>
-    <% } %>
+  <nav class="nav">
+    <div class="nav-left">
+      <a class="brand" href="/">Medify</a>
+      <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+        <a href="/doctors">Doctors</a>
+        <a href="/medications">Medications</a>
+        <a href="/appointments">Appointments</a>
+      <% } %>
+    </div>
+    <div class="nav-right">
+      <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+        <span class="hello">Hi, <%= currentUser.fullName %></span>
+        <form action="/auth/logout" method="post" style="display:inline;">
+          <button class="btn-out">Logout</button>
+        </form>
+      <% } else { %>
+        <a href="/auth/login">Login</a>
+        <a class="btn" href="/auth/signup">Sign up</a>
+      <% } %>
+    </div>
   </nav>
-</header>
-<main class="container">
+
+  <% if (typeof flash !== 'undefined' && flash) { %>
+    <div class="flash <%= flash.type %>"><%= flash.message %></div>
+  <% } %>
+
+  <main class="container">

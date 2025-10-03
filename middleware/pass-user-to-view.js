@@ -1,7 +1,6 @@
-// middleware/pass-user-to-view.js
-module.exports = function passUserToView(req, res, next) {
-  res.locals.user = req.session?.user || null;
+module.exports = function passUser(req, res, next) {
+  res.locals.currentUser = req.session?.user || null;
+  res.locals.flash = req.session?.flash || null;
+  delete req.session?.flash;
   next();
 };
-
-

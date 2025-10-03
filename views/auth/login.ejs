@@ -1,27 +1,14 @@
+<%- include('../partials/header') %>
+<h1>Welcome back</h1>
 
-<div class="wrap">
-  <div class="grid grid-2">
-    <div class="card">
-      <h2>Patient Login</h2>
-      <% if (typeof error !== 'undefined' && error) { %>
-        <p style="color:#b91c1c"><%= error %></p>
-      <% } %>
-      <form action="/auth/login" method="POST">
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" required />
-        </div>
-        <div class="field">
-          <label for="password">Password</label>
-          <input id="password" type="password" name="password" required />
-        </div>
-        <button class="btn" type="submit">Login</button>
-        <a class="link" href="/auth/signup">Create a patient account</a>
-      </form>
-    </div>
-    <div class="card">
-      <h3>Welcome back</h3>
-      <p>Manage your profile, appointments, and medications in one place.</p>
-    </div>
-  </div>
-</div>
+<form class="card form" action="/auth/login" method="post">
+  <label>Full name
+    <input type="text" name="fullName" required />
+  </label>
+  <label>Password
+    <input type="password" name="password" required />
+  </label>
+  <button class="btn">Log in</button>
+  <p class="muted">No account? <a href="/auth/signup">Create one</a></p>
+</form>
+<%- include('../partials/footer') %>

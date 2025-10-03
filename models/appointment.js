@@ -1,18 +1,18 @@
-// models/Appointment.js
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const AppointmentSchema = new mongoose.Schema(
+const AppointmentSchema = new Schema(
   {
-    userId:     { type: String, required: true, index: true },
-    doctorKey:  { type: String, required: true, index: true },
-    doctorName: { type: String, required: true },
-    start:      { type: Date,   required: true, index: true },
-    end:        { type: Date,   required: true },
+    user:   { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
+    doctor: { type: Schema.Types.ObjectId, ref: 'Doctor', required: true, index: true },
+    startsAt: { type: Date, required: true, index: true },
+    endsAt:   { type: Date, required: true },
+    notes: { type: String, trim: true }
   },
   { timestamps: true }
 );
 
-// Prevent two users booking the same doctor at the same start time
-AppointmentSchema.index({ doctorKey: 1, start: 1 }, { unique: true, name: 'unique_doctor_slot' });
+// 30-min normalization helper (called by controller)
+AppointmentSchema.index({ doctor: 1, startsAt: 1 }, { unique: true });
 
-module.exports = mongoose.model('Appointment', AppointmentSchema);
+module.exports = mongoose.models.Appointment || mongoose.model('Appointment', AppointmentSchema);

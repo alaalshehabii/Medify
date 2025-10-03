@@ -1,8 +1,20 @@
 const mongoose = require('mongoose');
-const { MONGODB_URI } = process.env;
 
-mongoose.connect(MONGODB_URI);
-mongoose.connection.on('connected', () => console.log('  MongoDB connected'));
-mongoose.connection.on('error', (err) => console.error('Mongo error:', err));
+const uri = process.env.MONGODB_URI;
+if (!uri) {
+  console.error('❌ Missing MONGODB_URI in .env');
+  process.exit(1);
+}
 
-module.exports = mongoose;
+mongoose.set('strictQuery', true);
+
+mongoose.connection.on('connected', () =>
+  console.log('✅ MongoDB connected')
+);
+mongoose.connection.on('error', (err) =>
+  console.error('❌ Mongo error:', err)
+);
+
+module.exports = async function connectDB() {
+  await mongoose.connect(uri);
+};

@@ -1,12 +1,21 @@
-<div class="card">
-  <h2>Edit Medication</h2>
-  <form method="POST" action="/medications/<%= medication._id %>?_method=PUT">
-    <div class="field"><label>Name</label><input name="name" value="<%= medication.name %>" required></div>
-    <div class="field"><label>Form</label><input name="form" value="<%= medication.form||'' %>"></div>
-    <div class="field"><label>Strength</label><input name="strength" value="<%= medication.strength||'' %>"></div>
-    <button class="btn">Save</button>
-  </form>
-  <form method="POST" action="/medications/<%= medication._id %>?_method=DELETE" style="margin-top:10px">
-    <button class="btn" style="background:#e05b5b">Delete</button>
-  </form>
-</div>
+<%- include('../partials/header') %>
+<h1>Edit Medication</h1>
+<form class="card form" action="/medications/<%= med._id %>/edit" method="post">
+  <div class="row">
+    <label>Name<input name="name" value="<%= med.name %>" required></label>
+    <label>Dosage<input name="dosage" value="<%= med.dosage %>" required></label>
+    <label>Times/day<input type="number" name="timesPerDay" min="1" max="6" value="<%= med.timesPerDay %>" required></label>
+  </div>
+  <fieldset>
+    <legend>Timing</legend>
+    <% ['morning','afternoon','evening','before food','after food','before bed'].forEach(t => { %>
+      <label class="checkbox">
+        <input type="checkbox" name="timing" value="<%= t %>" <%= (med.timing||[]).includes(t) ? 'checked' : '' %>> <%= t %>
+      </label>
+    <% }) %>
+  </fieldset>
+  <label>Notes<textarea name="notes" rows="2"><%= med.notes || '' %></textarea></label>
+  <button class="btn">Save changes</button>
+  <a class="btn-out" href="/medications">Cancel</a>
+</form>
+<%- include('../partials/footer') %>
