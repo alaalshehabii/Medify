@@ -1,20 +1,101 @@
 <%- include('../partials/header') %>
-<section class="hero">
-  <div>
-    <h1>Medify</h1>
-    <p class="lead">
-      Your simple health companion. Book telehealth or clinic appointments,
-      and track your medications in one place.
-    </p>
-    <ul class="bullets">
-      <li>30-minute appointment slots with our doctors</li>
-      <li>Personal medication tracker with reminders style timing</li>
-      <li>Clean, privacy-first design</li>
-    </ul>
-  </div>
-  <div class="hero-imgs">
-    <div class="ph-img">Image 1</div>
-    <div class="ph-img">Image 2</div>
+
+<section class="section">
+  <div class="container hero">
+    <div class="hero-grid">
+      <!-- Left: text -->
+      <div class="hero-copy">
+        <h1 class="page-title">Your health is our top priority</h1>
+        <p class="muted">
+          Your simple health companion: book clinic visits and track medications in one place.
+        </p>
+      </div>
+
+      <!-- Right: hero image -->
+      <div class="hero-image">
+        <img
+          src="/img/doctors.jpg"
+          alt="Our care team"
+          loading="lazy" decoding="async"
+        >
+      </div>
+    </div>
   </div>
 </section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="page-title center">Inside Medify</h2>
+    <p class="muted center">A simple, patient-first experience from scheduling to follow-up.</p>
+
+    <!-- Feature squares -->
+    <div class="feature-grid">
+
+      <!-- Appointments -->
+      <a class="feature-card feature-card--with-thumb" href="/appointments">
+        <div class="feature-main">
+          <div class="feature-icon" aria-hidden="true">
+            <!-- calendar icon -->
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
+              <rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M3 9.5h18" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M7 3v4M17 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Appointments</h3>
+            <p>Book 30-minute visits at times that suit you.</p>
+          </div>
+        </div>
+        <div class="feature-thumb">
+          <img src="/img/appointment.jpg.webp" alt="Appointments preview" loading="lazy" decoding="async">
+        </div>
+      </a>
+
+      <!-- Doctors -->
+      <a class="feature-card feature-card--with-thumb" href="/doctors">
+        <div class="feature-main">
+          <div class="feature-icon" aria-hidden="true">
+            <!-- stethoscope -->
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
+              <path d="M6 3v6a4 4 0 0 0 8 0V3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M14 15a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M10 13v3a5 5 0 0 0 5 5h1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Doctors</h3>
+            <p>Find the right specialist across our departments.</p>
+          </div>
+        </div>
+        <div class="feature-thumb">
+          <img src="/img/dr.jpg.webp" alt="Doctors preview" loading="lazy" decoding="async">
+        </div>
+      </a>
+
+      <!-- Medications -->
+      <a class="feature-card feature-card--with-thumb" href="/medications">
+        <div class="feature-main">
+          <div class="feature-icon" aria-hidden="true">
+            <!-- pill icon -->
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
+              <rect x="3" y="10" width="8" height="11" rx="4" stroke="currentColor" stroke-width="1.6"/>
+              <rect x="13" y="3" width="8" height="11" rx="4" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M13 8h8" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <h3>Medications</h3>
+            <p>Log each medicine with dosage, daily frequency, and timing notes.</p>
+          </div>
+        </div>
+        <div class="feature-thumb">
+          <img src="/img/meds.jpg" alt="Medications preview" loading="lazy" decoding="async">
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <%- include('../partials/footer') %>
