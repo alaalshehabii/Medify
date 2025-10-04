@@ -5,6 +5,11 @@
 **Medify** is a full-stack CRUD web app that helps **patients** manage their health in one place.  
 It combines a **doctor directory**, a **medication tracker**, and an **appointment booking system** to make healthcare simple and organized.
 
+<img width="500" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/17f0fddf-b2cb-438b-aab9-bcd0605ed4b9" />  
+<img width="500" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/bc455b21-8ae9-42fe-953a-28449955ef6f" />  
+<img width="500" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/9b438000-c6c6-4ae6-bc4d-d73d2361472d" />  
+<img width="500" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/3a5679a2-5bfc-4b8e-803b-1b8360a0274e" />  
+
 ---
 
 ## ✨ What it does
@@ -128,4 +133,5 @@ All in one organized, patient-first web app.
 ---
 
 <img width="500" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/883ded01-c37a-4179-aca3-f6677db0c029" />  
+
 
