@@ -48,6 +48,7 @@ It combines a **doctor directory**, a **medication tracker**, and an **appointme
 - **As a patient**, I want to **add medications with dosage and frequency**, so I can track what I need to take each day.  
 - **As a patient**, I want to **set reminders for when to take my medications (before food, before bed, etc.)**, so I don’t miss important doses.  
 - **As a patient**, I want to **see all my medications and appointments in one place**, so I can manage my health in an organized way.  
+<img width="320" height="200" alt="Screenshot 2025-10-04 at 6 38 37 AM" src="https://github.com/user-attachments/assets/853c0385-949d-40e5-8e46-572b1ba62bbf" />
 
 ---
 
