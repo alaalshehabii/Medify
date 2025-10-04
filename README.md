@@ -67,19 +67,11 @@ All in one organized, patient-first web app.
 
 ## 📸 Screenshots
 
-<p align="center">
-  <!-- Row 1 -->
-  <img src="screenshots/home.jpg"         alt="Homepage"          width="360" />
-  <img src="screenshots/doctors.PNG"      alt="Doctors"           width="360" />
-  <img src="screenshots/appointment.PNG"  alt="Appointments"      width="360" />
-</p>
-<p align="center">
-  <!-- Row 2 -->
-  <img src="screenshots/create.PNG"       alt="Sign up"           width="360" />
-  <img src="screenshots/welcome.PNG"      alt="Log in"            width="360" />
-  <img src="screenshots/medication.PNG"   alt="Medications"       width="360" />
-</p>
 
-> All screenshots are kept in `/screenshots` and displayed in a **3×2 grid** for consistency.
+<img width="1024" height="1024" alt="4924D437-605B-4074-97BC-F36921651284" src="https://github.com/user-attachments/assets/35b90f8b-ace8-4ee6-b552-284ac32518f3" />
+<img width="1536" height="1024" alt="444FEF9D-147D-4B93-B893-10F19D24CAD8" src="https://github.com/user-attachments/assets/d6d8fede-91cc-46c9-8cb8-ba2695694b81" />
+![6E38FA2F-5C86-4D8D-82C8-45DBDF0263AE](https://github.com/user-attachments/assets/74c1a734-4c8b-46ca-badd-945cb6862059)
+<img width="1536" height="1024" alt="182B6467-1422-4196-AC8C-8D01DF284E3D" src="https://github.com/user-attachments/assets/acc310ab-4ab8-488f-a903-7a30d5e2cb46" />
+<img width="1024" height="1024" alt="472C1314-DAC2-489D-BA6D-1FC3E3BD50B5" src="https://github.com/user-attachments/assets/3480ff8f-bfbb-4d1b-98a2-628be8b622f4" />
 
 ---
