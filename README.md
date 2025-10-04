@@ -1,6 +1,5 @@
 
-
-# 🩺 Medify — Health & Wellness Management System
+# 🩺 Medify – Health & Wellness Management System
 
 **Medify** is a full-stack CRUD web app that helps **patients** manage their health in one place.  
 It combines a **doctor directory**, a **medication tracker**, and an **appointment booking system** to make healthcare simple and organized.
@@ -33,7 +32,6 @@ It combines a **doctor directory**, a **medication tracker**, and an **appointme
 ---
 
 ## 🧩 Core Features
-
 - **Auth** — secure signup, login, and logout  
 - **Doctors Directory** — static list of doctors with photos and specialties  
 - **Appointments** — CRUD for booking, editing, and canceling visits  
@@ -41,8 +39,18 @@ It combines a **doctor directory**, a **medication tracker**, and an **appointme
 
 ---
 
-## 🛠️ Technologies
+## 👥 User Stories
+- **As a patient**, I want to **create an account and log in securely**, so that my data is private and only accessible to me.  
+- **As a patient**, I want to **browse a list of doctors with their specialties**, so I can find the right doctor for my needs.  
+- **As a patient**, I want to **book a 30-minute appointment with a doctor** and add notes, so I can explain my concerns in advance.  
+- **As a patient**, I want to **view, edit, or cancel my upcoming appointments**, so I can manage my schedule easily.  
+- **As a patient**, I want to **add medications with dosage and frequency**, so I can track what I need to take each day.  
+- **As a patient**, I want to **set reminders for when to take my medications (before food, before bed, etc.)**, so I don’t miss important doses.  
+- **As a patient**, I want to **see all my medications and appointments in one place**, so I can manage my health in an organized way.  
 
+---
+
+## 🛠️ Technologies
 - **Node.js + Express** — backend server and routing  
 - **MongoDB + Mongoose** — database and schemas  
 - **EJS + express-ejs-layouts** — server-rendered views with shared layouts  
@@ -55,7 +63,6 @@ It combines a **doctor directory**, a **medication tracker**, and an **appointme
 ---
 
 ## 📌 Summary
-
 Medify is a portfolio-ready CRUD project for healthcare management:  
 - Browse doctors  
 - Book and manage appointments  
@@ -67,13 +74,9 @@ All in one organized, patient-first web app.
 
 ## 📸 Wireframes Screenshots
 
-
-<img width="320" height="200" alt="4924D437-605B-4074-97BC-F36921651284" src="https://github.com/user-attachments/assets/35b90f8b-ace8-4ee6-b552-284ac32518f3" />
-<img width="320" height="200" alt="444FEF9D-147D-4B93-B893-10F19D24CAD8" src="https://github.com/user-attachments/assets/d6d8fede-91cc-46c9-8cb8-ba2695694b81" />
-<img width="320" height="200" alt="182B6467-1422-4196-AC8C-8D01DF284E3D" src="https://github.com/user-attachments/assets/acc310ab-4ab8-488f-a903-7a30d5e2cb46" />
-<img width="320" height="200" alt="472C1314-DAC2-489D-BA6D-1FC3E3BD50B5" src="https://github.com/user-attachments/assets/3480ff8f-bfbb-4d1b-98a2-628be8b622f4" />
-<img width="320" height="200" alt="C759AC6E-F570-4EB3-A7CB-0F014D01ED16" src="https://github.com/user-attachments/assets/db54af48-d3dc-46ca-bab2-f44a91a51d6b" />
-<img width="320" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/db54af48-d3dc-46ca-bab2-f44a91a51d6b" />
-
-
----
+<img width="320" height="200" alt="4924D437-605B-4074-97BC-F36921651284" src="https://github.com/user-attachments/assets/35b90f8b-ace8-4ee6-b552-284ac32518f3" />  
+<img width="320" height="200" alt="444FEF9D-147D-4B93-B893-10F19D24CAD8" src="https://github.com/user-attachments/assets/d6d8fede-91cc-46c9-8cb8-ba2695694b81" />  
+<img width="320" height="200" alt="182B6467-1422-4196-AC8C-8D01DF284E3D" src="https://github.com/user-attachments/assets/acc310ab-4ab8-488f-a903-7a30d5e2cb46" />  
+<img width="320" height="200" alt="472C1314-DAC2-489D-BA6D-1FC3E3BD50B5" src="https://github.com/user-attachments/assets/3480ff8f-bfbb-4d1b-98a2-628be8b622f4" />  
+<img width="320" height="200" alt="C759AC6E-F570-4EB3-A7CB-0F014D01ED16" src="https://github.com/user-attachments/assets/db54af48-d3dc-46ca-bab2-f44a91a51d6b" />  
+<img width="320" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/db54af48-d3dc-46ca-bab2-f44a91a51d6b" />  
