@@ -65,13 +65,13 @@ All in one organized, patient-first web app.
 
 ---
 
-## 📸 Screenshots
+## 📸 Wireframes Screenshots
 
 
-<img width="1024" height="1024" alt="4924D437-605B-4074-97BC-F36921651284" src="https://github.com/user-attachments/assets/35b90f8b-ace8-4ee6-b552-284ac32518f3" />
-<img width="1536" height="1024" alt="444FEF9D-147D-4B93-B893-10F19D24CAD8" src="https://github.com/user-attachments/assets/d6d8fede-91cc-46c9-8cb8-ba2695694b81" />
-<img width="1536" height="1024" alt="182B6467-1422-4196-AC8C-8D01DF284E3D" src="https://github.com/user-attachments/assets/acc310ab-4ab8-488f-a903-7a30d5e2cb46" />
-<img width="1024" height="1024" alt="472C1314-DAC2-489D-BA6D-1FC3E3BD50B5" src="https://github.com/user-attachments/assets/3480ff8f-bfbb-4d1b-98a2-628be8b622f4" />
-
+<img width="320" height="200" alt="4924D437-605B-4074-97BC-F36921651284" src="https://github.com/user-attachments/assets/35b90f8b-ace8-4ee6-b552-284ac32518f3" />
+<img width="320" height="200" alt="444FEF9D-147D-4B93-B893-10F19D24CAD8" src="https://github.com/user-attachments/assets/d6d8fede-91cc-46c9-8cb8-ba2695694b81" />
+<img width="320" height="200" alt="182B6467-1422-4196-AC8C-8D01DF284E3D" src="https://github.com/user-attachments/assets/acc310ab-4ab8-488f-a903-7a30d5e2cb46" />
+<img width="320" height="200" alt="472C1314-DAC2-489D-BA6D-1FC3E3BD50B5" src="https://github.com/user-attachments/assets/3480ff8f-bfbb-4d1b-98a2-628be8b622f4" />
+<img width="320" height="200" alt="C759AC6E-F570-4EB3-A7CB-0F014D01ED16" src="https://github.com/user-attachments/assets/db54af48-d3dc-46ca-bab2-f44a91a51d6b" />
 
 ---
