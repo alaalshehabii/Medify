@@ -18,9 +18,9 @@ const app = express();
   await connectDB();
   try {
     const changed = await seedDoctorsUpsert();
-    console.log(`🌱 Ensured default doctors exist (changed/created: ${changed}).`);
+    console.log(` Ensured default doctors exist (changed/created: ${changed}).`);
   } catch (e) {
-    console.warn('⚠️ Could not seed doctors:', e?.message || e);
+    console.warn(' Could not seed doctors:', e?.message || e);
   }
 })();
 
@@ -68,4 +68,4 @@ app.use((err, _req, res, _next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Medify running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(` Medify running on http://localhost:${PORT}`));
