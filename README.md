@@ -1,4 +1,5 @@
 
+
 # 🩺 Medify — Health & Wellness Management System
 
 **Medify** is a full-stack CRUD web app that helps **patients** manage their health in one place.  
@@ -61,3 +62,24 @@ Medify is a portfolio-ready CRUD project for healthcare management:
 - Track medications  
 
 All in one organized, patient-first web app.  
+
+---
+
+## 📸 Screenshots
+
+<p align="center">
+  <!-- Row 1 -->
+  <img src="screenshots/home.jpg"         alt="Homepage"          width="360" />
+  <img src="screenshots/doctors.PNG"      alt="Doctors"           width="360" />
+  <img src="screenshots/appointment.PNG"  alt="Appointments"      width="360" />
+</p>
+<p align="center">
+  <!-- Row 2 -->
+  <img src="screenshots/create.PNG"       alt="Sign up"           width="360" />
+  <img src="screenshots/welcome.PNG"      alt="Log in"            width="360" />
+  <img src="screenshots/medication.PNG"   alt="Medications"       width="360" />
+</p>
+
+> All screenshots are kept in `/screenshots` and displayed in a **3×2 grid** for consistency.
+
+---
