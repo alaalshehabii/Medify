@@ -73,5 +73,7 @@ All in one organized, patient-first web app.
 <img width="320" height="200" alt="182B6467-1422-4196-AC8C-8D01DF284E3D" src="https://github.com/user-attachments/assets/acc310ab-4ab8-488f-a903-7a30d5e2cb46" />
 <img width="320" height="200" alt="472C1314-DAC2-489D-BA6D-1FC3E3BD50B5" src="https://github.com/user-attachments/assets/3480ff8f-bfbb-4d1b-98a2-628be8b622f4" />
 <img width="320" height="200" alt="C759AC6E-F570-4EB3-A7CB-0F014D01ED16" src="https://github.com/user-attachments/assets/db54af48-d3dc-46ca-bab2-f44a91a51d6b" />
+<img width="320" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/db54af48-d3dc-46ca-bab2-f44a91a51d6b" />
+
 
 ---
