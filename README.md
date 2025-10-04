@@ -1,4 +1,5 @@
 
+
 # 🩺 Medify – Health & Wellness Management System
 
 **Medify** is a full-stack CRUD web app that helps **patients** manage their health in one place.  
@@ -80,3 +81,47 @@ All in one organized, patient-first web app.
 <img width="320" height="200" alt="472C1314-DAC2-489D-BA6D-1FC3E3BD50B5" src="https://github.com/user-attachments/assets/3480ff8f-bfbb-4d1b-98a2-628be8b622f4" />  
 <img width="320" height="200" alt="C759AC6E-F570-4EB3-A7CB-0F014D01ED16" src="https://github.com/user-attachments/assets/db54af48-d3dc-46ca-bab2-f44a91a51d6b" />  
 <img width="320" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/db54af48-d3dc-46ca-bab2-f44a91a51d6b" />  
+
+## 📌 Routes & Endpoints
+
+### 🔑 Auth
+| Action   | Route        | HTTP Verb |
+|----------|--------------|-----------|
+| Signup   | `/signup`    | GET / POST |
+| Login    | `/login`     | GET / POST |
+| Logout   | `/logout`    | POST      |
+
+---
+
+### 👨‍⚕️ Doctors
+| Action   | Route        | HTTP Verb |
+|----------|--------------|-----------|
+| Index    | `/doctors`   | GET       |
+| Show     | `/doctors/:id` | GET     |
+
+---
+
+### 📅 Appointments
+| Action   | Route                       | HTTP Verb |
+|----------|-----------------------------|-----------|
+| Index    | `/appointments`             | GET       |
+| New      | `/appointments/new`         | GET       |
+| Create   | `/appointments`             | POST      |
+| Show     | `/appointments/:id`         | GET       |
+| Edit     | `/appointments/:id/edit`    | GET       |
+| Update   | `/appointments/:id`         | PUT       |
+| Delete   | `/appointments/:id`         | DELETE    |
+
+---
+
+### 💊 Medications
+| Action   | Route                         | HTTP Verb |
+|----------|-------------------------------|-----------|
+| Index    | `/medications`                | GET       |
+| New      | `/medications/new`            | GET       |
+| Create   | `/medications`                | POST      |
+| Edit     | `/medications/:id/edit`       | GET       |
+| Update   | `/medications/:id`            | PUT       |
+| Delete   | `/medications/:id`            | DELETE    |
+
+---
