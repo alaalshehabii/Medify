@@ -134,4 +134,7 @@ All in one organized, patient-first web app.
 
 <img width="500" height="200" alt="wireframe 6" src="https://github.com/user-attachments/assets/883ded01-c37a-4179-aca3-f6677db0c029" />  
 
+## Future Work
+- add chatbot for inquries
+- add medical report reading 
 
